@@ -1,0 +1,6 @@
+/public/app.js
+/.local/
+/out/
+/dist/
+/.tsbuild/
+/node_modules/
