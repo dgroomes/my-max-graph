@@ -1,0 +1,81 @@
+<GraphDataModel>
+  <root>
+    <Cell id="0"><Object as="style" /></Cell>
+    <Cell id="1" parent="0"><Object as="style" /></Cell>
+    <Cell id="background" value="" vertex="1" parent="1">
+      <Geometry _x="0" _y="0" _width="760" _height="360" as="geometry" />
+      <Object rounded="1" arcSize="8" fillColor="#ffffff" strokeColor="none" as="style" />
+    </Cell>
+    <Cell id="2" value="" vertex="1" parent="1">
+      <Geometry _x="40" _y="55" _width="680" _height="120" as="geometry" />
+      <Object rounded="1" arcSize="10" fillColor="#fff7ed" strokeColor="none" as="style" />
+    </Cell>
+    <Cell id="3" value="" vertex="1" parent="1">
+      <Geometry _x="40" _y="185" _width="680" _height="120" as="geometry" />
+      <Object rounded="1" arcSize="10" fillColor="#f5f3ff" strokeColor="none" as="style" />
+    </Cell>
+    <Cell id="4" value="" edge="1" parent="1">
+      <Geometry relative="1" as="geometry"><Point _x="40" _y="180" as="sourcePoint" /><Point _x="720" _y="180" as="targetPoint" /></Geometry>
+      <Object dashed="1" dashPattern="5 5" endArrow="none" strokeColor="#98a2b3" strokeWidth="2" as="style" />
+    </Cell>
+    <Cell id="5" value="COLLABORATION RELAY" vertex="1" parent="1">
+      <Geometry _x="280" _y="0" _width="200" _height="32" as="geometry" />
+      <Object fontFamily="Arial" fontColor="#172033" strokeColor="none" fillColor="none" whiteSpace="wrap" html="0" fontSize="16" fontStyle="1" align="center" verticalAlign="middle" as="style" />
+    </Cell>
+    <Cell id="6" value="HUMAN LANE" vertex="1" parent="1">
+      <Geometry _x="56" _y="66" _width="120" _height="20" as="geometry" />
+      <Object fontFamily="Arial" fontColor="#172033" strokeColor="none" fillColor="none" whiteSpace="wrap" html="0" fontSize="12" fontStyle="1" align="left" verticalAlign="top" as="style" />
+    </Cell>
+    <Cell id="7" value="AGENT LANE" vertex="1" parent="1">
+      <Geometry _x="56" _y="196" _width="120" _height="20" as="geometry" />
+      <Object fontFamily="Arial" fontColor="#172033" strokeColor="none" fillColor="none" whiteSpace="wrap" html="0" fontSize="12" fontStyle="1" align="left" verticalAlign="top" as="style" />
+    </Cell>
+    <Cell id="8" value="YOU" vertex="1" parent="1">
+      <Geometry _x="85" _y="88" _width="120" _height="54" as="geometry" />
+      <Object fontFamily="Arial" fontColor="#172033" fontSize="15" strokeWidth="2" whiteSpace="wrap" html="0" verticalAlign="middle" align="center" shape="ellipse" fillColor="#ffffff" strokeColor="#667085" fontStyle="1" as="style" />
+    </Cell>
+    <Cell id="9" value="REQUEST" vertex="1" parent="1">
+      <Geometry _x="345" _y="88" _width="130" _height="54" as="geometry" />
+      <Object fontFamily="Arial" fontColor="#172033" fontSize="15" strokeWidth="2" whiteSpace="wrap" html="0" verticalAlign="middle" align="center" rounded="1" arcSize="14" fillColor="#ffffff" strokeColor="#667085" fontStyle="1" as="style" />
+    </Cell>
+    <Cell id="10" value="EDIT XML" vertex="1" parent="1">
+      <Geometry _x="505" _y="218" _width="130" _height="54" as="geometry" />
+      <Object fontFamily="Arial" fontColor="#172033" fontSize="15" strokeWidth="2" whiteSpace="wrap" html="0" verticalAlign="middle" align="center" rounded="1" arcSize="14" fillColor="#ffffff" strokeColor="#667085" fontStyle="1" as="style" />
+    </Cell>
+    <Cell id="11" value="RENDER" vertex="1" parent="1">
+      <Geometry _x="215" _y="218" _width="130" _height="54" as="geometry" />
+      <Object fontFamily="Arial" fontColor="#172033" fontSize="15" strokeWidth="2" whiteSpace="wrap" html="0" verticalAlign="middle" align="center" rounded="1" arcSize="14" fillColor="#ffffff" strokeColor="#667085" fontStyle="1" as="style" />
+    </Cell>
+    <Cell id="12" value="intent goes out · evidence comes back" vertex="1" parent="1">
+      <Geometry _x="230" _y="316" _width="300" _height="24" as="geometry" />
+      <Object fontFamily="Arial" fontColor="#475467" strokeColor="none" fillColor="none" whiteSpace="wrap" html="0" fontSize="12" align="center" verticalAlign="middle" as="style" />
+    </Cell>
+    <Cell id="13" value="" edge="1" parent="1" source="8" target="9">
+      <Geometry relative="1" as="geometry" />
+      <Object edgeStyle="orthogonalEdgeStyle" orthogonalLoop="1" jettySize="auto" rounded="0" strokeColor="#344054" strokeWidth="2" endArrow="block" endFill="1" fontFamily="Arial" fontSize="12" fontColor="#475467" labelBackgroundColor="#ffffff" exitX="1" exitY="0.5" entryX="0" entryY="0.5" as="style" />
+    </Cell>
+    <Cell id="14" value="" edge="1" parent="1" source="9" target="10">
+      <Geometry relative="1" as="geometry">
+        <Array as="points">
+          <Point _x="410" _y="180" />
+          <Point _x="410" _y="237" />
+        </Array>
+      </Geometry>
+      <Object edgeStyle="orthogonalEdgeStyle" orthogonalLoop="1" jettySize="auto" rounded="0" strokeColor="#344054" strokeWidth="2" endArrow="block" endFill="1" exitX="0.5" exitY="1" entryX="0" entryY="0.35" as="style" />
+    </Cell>
+    <Cell id="15" value="" edge="1" parent="1" source="10" target="11">
+      <Geometry relative="1" as="geometry" />
+      <Object edgeStyle="orthogonalEdgeStyle" orthogonalLoop="1" jettySize="auto" rounded="0" strokeColor="#344054" strokeWidth="2" endArrow="block" endFill="1" exitX="0" exitY="0.75" entryX="1" entryY="0.75" as="style" />
+    </Cell>
+    <Cell id="16" value="" edge="1" parent="1" source="11" target="8">
+      <Geometry relative="1" as="geometry">
+        <Array as="points">
+          <Point _x="180" _y="237" />
+          <Point _x="180" _y="165" />
+          <Point _x="145" _y="165" />
+        </Array>
+      </Geometry>
+      <Object edgeStyle="orthogonalEdgeStyle" orthogonalLoop="1" jettySize="auto" rounded="0" strokeColor="#344054" strokeWidth="2" endArrow="block" endFill="1" exitX="0" exitY="0.35" entryX="0.5" entryY="1" as="style" />
+    </Cell>
+  </root>
+</GraphDataModel>

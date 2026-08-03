@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 360" role="img" aria-labelledby="title desc">
+  <title id="title">Continuous flow</title><desc id="desc">A compact lifecycle moves from intent to XML, viewing, review, and refinement.</desc>
+  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 8 4 0 8z" fill="#344054"/></marker></defs>
+  <rect width="760" height="360" rx="18" fill="#fffdf8"/><g font-family="system-ui,sans-serif" text-anchor="middle" fill="#172033">
+  <text x="380" y="34" font-size="16" font-weight="700">CONTINUOUS FLOW</text>
+  <g fill="none" stroke="#344054" stroke-width="2" marker-end="url(#arrow)"><path d="M150 150H188"/><path d="M310 150H348"/><path d="M470 150H508"/><path d="M630 150H676V280H90V190"/></g>
+  <g stroke="#667085" stroke-width="2"><circle cx="90" cy="150" r="60" fill="#fff7ed"/><circle cx="250" cy="150" r="60" fill="#ecfdf3"/><circle cx="410" cy="150" r="60" fill="#eff6ff"/><circle cx="570" cy="150" r="60" fill="#f5f3ff"/></g>
+  <g font-size="14" font-weight="650"><text x="90" y="146">INTENT</text><text x="90" y="166" font-size="11" font-weight="400">you or agent</text><text x="250" y="146">EDIT</text><text x="250" y="166" font-size="11" font-weight="400">diagram XML</text><text x="410" y="146">VIEW</text><text x="410" y="166" font-size="11" font-weight="400">live browser</text><text x="570" y="146">REVIEW</text><text x="570" y="166" font-size="11" font-weight="400">render or vision</text></g>
+  <text x="380" y="305" font-size="12" fill="#475467">refine until the diagram says exactly enough</text></g>
+</svg>

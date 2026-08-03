@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 360" role="img" aria-labelledby="title desc">
+  <title id="title">Relay</title><desc id="desc">Two swimlanes show intent passing from the user to agent implementation and a rendered result returning.</desc>
+  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 8 4 0 8z" fill="#344054"/></marker></defs>
+  <rect width="760" height="360" rx="18" fill="#fff"/><g font-family="system-ui,sans-serif" fill="#172033">
+  <text x="380" y="31" font-size="16" font-weight="700" text-anchor="middle">COLLABORATION RELAY</text><rect x="40" y="55" width="680" height="120" rx="12" fill="#fff7ed"/><rect x="40" y="185" width="680" height="120" rx="12" fill="#f5f3ff"/><path d="M40 180H720" stroke="#98a2b3" stroke-width="2" stroke-dasharray="5 5"/>
+  <g fill="none" stroke="#344054" stroke-width="2" marker-end="url(#arrow)"><path d="M205 115H345"/><path d="M410 145V245H505"/><path d="M505 265H345"/><path d="M280 245V145H205"/></g>
+  <g stroke="#667085" stroke-width="2"><rect x="85" y="88" width="120" height="54" rx="27" fill="#fff"/><rect x="345" y="88" width="130" height="54" rx="10" fill="#fff"/><rect x="505" y="218" width="130" height="54" rx="10" fill="#fff"/><rect x="215" y="218" width="130" height="54" rx="10" fill="#fff"/></g>
+  <g text-anchor="middle" font-size="13" font-weight="650"><text x="145" y="120">YOU</text><text x="410" y="120">REQUEST</text><text x="570" y="250">EDIT XML</text><text x="280" y="250">RENDER</text></g><g font-size="12" font-weight="700"><text x="56" y="76">HUMAN LANE</text><text x="56" y="206">AGENT LANE</text></g><text x="380" y="334" text-anchor="middle" font-size="12" fill="#475467">intent goes out · evidence comes back</text></g>
+</svg>

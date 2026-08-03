@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 360" role="img" aria-labelledby="title desc">
+  <title id="title">Shared workspace</title><desc id="desc">The diagram XML is a central shared workspace connected to two actors and two projections.</desc>
+  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 8 4 0 8z" fill="#344054"/></marker></defs>
+  <rect width="760" height="360" rx="18" fill="#f8fafc"/><g font-family="system-ui,sans-serif" text-anchor="middle" fill="#172033">
+  <text x="380" y="32" font-size="16" font-weight="700">SHARED WORKSPACE</text>
+  <g fill="none" stroke="#344054" stroke-width="2" marker-end="url(#arrow)"><path d="M190 105H270V160"/><path d="M570 105H490V160"/><path d="M330 220V272H190"/><path d="M430 220V272H570"/></g>
+  <g stroke-width="2"><circle cx="120" cy="105" r="52" fill="#fff7ed" stroke="#c2410c"/><circle cx="640" cy="105" r="52" fill="#f5f3ff" stroke="#7c3aed"/><rect x="270" y="140" width="220" height="100" rx="14" fill="#ecfdf3" stroke="#16803c"/><rect x="80" y="272" width="220" height="54" rx="10" fill="#eff6ff" stroke="#2563eb"/><rect x="460" y="272" width="220" height="54" rx="10" fill="#fff" stroke="#667085"/></g>
+  <g font-size="14" font-weight="650"><text x="120" y="110">YOU</text><text x="640" y="110">AGENT</text><text x="380" y="183" font-size="17">DIAGRAM.XML</text><text x="380" y="207" font-size="12" font-weight="400">versioned · inspectable · editable</text><text x="190" y="304">LIVE BROWSER</text><text x="570" y="304">RENDERED OUTPUT</text></g>
+  <g font-size="11" fill="#475467"><text x="230" y="94">coarse edit</text><text x="530" y="94">direct edit</text><text x="250" y="263">sync</text><text x="510" y="263">render</text></g></g>
+</svg>

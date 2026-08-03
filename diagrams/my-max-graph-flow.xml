@@ -1,0 +1,72 @@
+<GraphDataModel>
+  <root>
+    <Cell id="0">
+      <Object as="style" />
+    </Cell>
+    <Cell id="1" parent="0">
+      <Object as="style" />
+    </Cell>
+
+    <Cell id="you" value="You" vertex="1" parent="1">
+      <Geometry _x="70" _y="305" _width="140" _height="70" as="geometry" />
+      <Object shape="ellipse" fillColor="#f8cecc" strokeColor="#b85450" fontColor="#1f2937" fontSize="15" fontStyle="1" as="style" />
+    </Cell>
+    <Cell id="agent" value="Agent" vertex="1" parent="1">
+      <Geometry _x="980" _y="305" _width="160" _height="70" as="geometry" />
+      <Object rounded="1" fillColor="#e1d5e7" strokeColor="#9673a6" fontColor="#1f2937" fontSize="15" fontStyle="1" as="style" />
+    </Cell>
+    <Cell id="file" value="diagram.xml" vertex="1" parent="1">
+      <Geometry _x="500" _y="300" _width="200" _height="80" as="geometry" />
+      <Object rounded="1" fillColor="#d5e8d4" strokeColor="#82b366" strokeWidth="2" fontColor="#1f2937" fontSize="17" fontFamily="Courier New" fontStyle="1" as="style" />
+    </Cell>
+    <Cell id="browser" value="browser canvas" vertex="1" parent="1">
+      <Geometry _x="500" _y="85" _width="200" _height="70" as="geometry" />
+      <Object rounded="1" fillColor="#dae8fc" strokeColor="#6c8ebf" fontColor="#1f2937" fontSize="14" as="style" />
+    </Cell>
+    <Cell id="render" value="rendered PNG / SVG" vertex="1" parent="1">
+      <Geometry _x="500" _y="530" _width="200" _height="70" as="geometry" />
+      <Object rounded="1" fillColor="#fff2cc" strokeColor="#d6b656" fontColor="#1f2937" fontSize="14" as="style" />
+    </Cell>
+
+    <Cell id="lookDrag" value="look · drag · connect" edge="1" parent="1" source="you" target="browser">
+      <Geometry relative="1" as="geometry">
+        <Point _x="0" _y="-12" as="offset" />
+      </Geometry>
+      <Object sourcePerimeterSpacing="4" targetPerimeterSpacing="4" edgeStyle="orthogonalEdgeStyle" rounded="1" exitX="0.75" exitY="0" entryX="0" entryY="0.5" startArrow="block" endArrow="block" strokeColor="#6c8ebf" fontColor="#3b5b82" fontSize="12" labelBackgroundColor="#ffffff" as="style" />
+    </Cell>
+    <Cell id="liveSync" value="live sync" edge="1" parent="1" source="browser" target="file">
+      <Geometry relative="1" as="geometry">
+        <Point _x="16" _y="0" as="offset" />
+      </Geometry>
+      <Object sourcePerimeterSpacing="4" targetPerimeterSpacing="4" exitX="0.5" exitY="1" entryX="0.5" entryY="0" startArrow="block" endArrow="block" strokeColor="#6c8ebf" fontColor="#3b5b82" fontSize="12" labelBackgroundColor="#ffffff" as="style" />
+    </Cell>
+    <Cell id="editXml" value="edit the XML" edge="1" parent="1" source="agent" target="file">
+      <Geometry relative="1" as="geometry">
+        <Point _x="0" _y="-12" as="offset" />
+      </Geometry>
+      <Object sourcePerimeterSpacing="4" targetPerimeterSpacing="4" exitX="0" exitY="0.5" entryX="1" entryY="0.5" endArrow="block" strokeColor="#9673a6" fontColor="#5b3b82" fontSize="12" labelBackgroundColor="#ffffff" as="style" />
+    </Cell>
+    <Cell id="renderCmd" value="$ my-max-graph render" edge="1" parent="1" source="file" target="render">
+      <Geometry relative="1" as="geometry">
+        <Point _x="16" _y="0" as="offset" />
+      </Geometry>
+      <Object sourcePerimeterSpacing="4" targetPerimeterSpacing="4" exitX="0.5" exitY="1" entryX="0.5" entryY="0" dashed="1" endArrow="block" strokeColor="#d6b656" fontColor="#6b5b1e" fontSize="12" fontFamily="Courier New" labelBackgroundColor="#ffffff" as="style" />
+    </Cell>
+    <Cell id="inspect" value="inspect (vision)" edge="1" parent="1" source="render" target="agent">
+      <Geometry relative="1" as="geometry">
+        <Point _x="0" _y="-12" as="offset" />
+      </Geometry>
+      <Object sourcePerimeterSpacing="4" targetPerimeterSpacing="4" edgeStyle="orthogonalEdgeStyle" rounded="1" exitX="1" exitY="0.5" entryX="0.5" entryY="1" endArrow="block" strokeColor="#9673a6" fontColor="#5b3b82" fontSize="12" labelBackgroundColor="#ffffff" as="style" />
+    </Cell>
+    <Cell id="converse" value="&quot;tighten this up&quot;" edge="1" parent="1" source="you" target="agent">
+      <Geometry relative="1" as="geometry">
+        <Array as="points">
+          <Point _x="105" _y="40" />
+          <Point _x="1100" _y="40" />
+        </Array>
+        <Point _x="0" _y="-12" as="offset" />
+      </Geometry>
+      <Object rounded="1" exitX="0.25" exitY="0" entryX="0.75" entryY="0" dashed="1" endArrow="block" strokeColor="#b85450" fontColor="#7f1d1d" fontSize="12" fontStyle="2" labelBackgroundColor="#ffffff" as="style" />
+    </Cell>
+  </root>
+</GraphDataModel>

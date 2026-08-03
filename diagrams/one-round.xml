@@ -1,0 +1,135 @@
+<GraphDataModel>
+  <root>
+    <Cell id="0">
+      <Object as="style" />
+    </Cell>
+    <Cell id="1" parent="0">
+      <Object as="style" />
+    </Cell>
+
+    <!-- Lifeline headers -->
+    <Cell id="you" value="You" vertex="1" parent="1">
+      <Geometry _x="60" _y="40" _width="120" _height="48" as="geometry" />
+      <Object shape="ellipse" fillColor="#f8cecc" strokeColor="#b85450" fontColor="#1f2937" fontSize="14" fontStyle="1" as="style" />
+    </Cell>
+    <Cell id="browser" value="Browser canvas" vertex="1" parent="1">
+      <Geometry _x="275" _y="40" _width="170" _height="48" as="geometry" />
+      <Object rounded="1" fillColor="#dae8fc" strokeColor="#6c8ebf" fontColor="#1f2937" fontSize="14" fontStyle="1" as="style" />
+    </Cell>
+    <Cell id="file" value="checkout.xml" vertex="1" parent="1">
+      <Geometry _x="535" _y="40" _width="170" _height="48" as="geometry" />
+      <Object rounded="1" fillColor="#d5e8d4" strokeColor="#82b366" fontColor="#1f2937" fontSize="14" fontStyle="1" fontFamily="Courier New" as="style" />
+    </Cell>
+    <Cell id="agent" value="Agent" vertex="1" parent="1">
+      <Geometry _x="795" _y="40" _width="170" _height="48" as="geometry" />
+      <Object rounded="1" fillColor="#e1d5e7" strokeColor="#9673a6" fontColor="#1f2937" fontSize="14" fontStyle="1" as="style" />
+    </Cell>
+    <Cell id="cli" value="my-max-graph CLI" vertex="1" parent="1">
+      <Geometry _x="1035" _y="40" _width="190" _height="48" as="geometry" />
+      <Object rounded="1" fillColor="#fff2cc" strokeColor="#d6b656" fontColor="#1f2937" fontSize="14" fontStyle="1" as="style" />
+    </Cell>
+
+    <!-- Lifelines: visible dotted vertical lines that message edges pin to at fractional heights -->
+    <Cell id="youSpine" value="" vertex="1" parent="1">
+      <Geometry _x="115" _y="88" _width="10" _height="760" as="geometry" />
+      <Object shape="line" direction="north" dashed="1" dashPattern="2 4" strokeColor="#c4cbd4" as="style" />
+    </Cell>
+    <Cell id="browserSpine" value="" vertex="1" parent="1">
+      <Geometry _x="355" _y="88" _width="10" _height="760" as="geometry" />
+      <Object shape="line" direction="north" dashed="1" dashPattern="2 4" strokeColor="#c4cbd4" as="style" />
+    </Cell>
+    <Cell id="fileSpine" value="" vertex="1" parent="1">
+      <Geometry _x="615" _y="88" _width="10" _height="760" as="geometry" />
+      <Object shape="line" direction="north" dashed="1" dashPattern="2 4" strokeColor="#c4cbd4" as="style" />
+    </Cell>
+    <Cell id="agentSpine" value="" vertex="1" parent="1">
+      <Geometry _x="875" _y="88" _width="10" _height="760" as="geometry" />
+      <Object shape="line" direction="north" dashed="1" dashPattern="2 4" strokeColor="#c4cbd4" as="style" />
+    </Cell>
+    <Cell id="cliSpine" value="" vertex="1" parent="1">
+      <Geometry _x="1125" _y="88" _width="10" _height="760" as="geometry" />
+      <Object shape="line" direction="north" dashed="1" dashPattern="2 4" strokeColor="#c4cbd4" as="style" />
+    </Cell>
+
+    <!-- Messages, top to bottom -->
+    <Cell id="m1" value="drag the gateway box left" edge="1" parent="1" source="youSpine" target="browserSpine">
+      <Geometry relative="1" as="geometry">
+        <Point _x="0" _y="-11" as="offset" />
+      </Geometry>
+      <Object exitX="0.5" exitY="0.074" entryX="0.5" entryY="0.074" endArrow="block" strokeColor="#344054" fontColor="#1f2937" fontSize="12" labelBackgroundColor="#ffffff" as="style" />
+    </Cell>
+    <Cell id="m2" value="save (PUT updated XML)" edge="1" parent="1" source="browserSpine" target="fileSpine">
+      <Geometry relative="1" as="geometry">
+        <Point _x="0" _y="-11" as="offset" />
+      </Geometry>
+      <Object exitX="0.5" exitY="0.139" entryX="0.5" entryY="0.139" endArrow="block" strokeColor="#344054" fontColor="#1f2937" fontSize="12" labelBackgroundColor="#ffffff" as="style" />
+    </Cell>
+    <Cell id="m3" value="&quot;connect gateway to ledger, dashed&quot;" edge="1" parent="1" source="youSpine" target="agentSpine">
+      <Geometry relative="1" as="geometry">
+        <Point _x="0" _y="-11" as="offset" />
+      </Geometry>
+      <Object exitX="0.5" exitY="0.218" entryX="0.5" entryY="0.218" endArrow="block" dashed="1" strokeColor="#b85450" fontColor="#b85450" fontSize="12" fontStyle="2" labelBackgroundColor="#ffffff" as="style" />
+    </Cell>
+    <Cell id="m4" value="read" edge="1" parent="1" source="agentSpine" target="fileSpine">
+      <Geometry relative="1" as="geometry">
+        <Point _x="0" _y="-11" as="offset" />
+      </Geometry>
+      <Object exitX="0.5" exitY="0.297" entryX="0.5" entryY="0.297" endArrow="block" strokeColor="#344054" fontColor="#1f2937" fontSize="12" labelBackgroundColor="#ffffff" as="style" />
+    </Cell>
+    <Cell id="m5" value="edit: add edge, style it" edge="1" parent="1" source="agentSpine" target="fileSpine">
+      <Geometry relative="1" as="geometry">
+        <Point _x="0" _y="-11" as="offset" />
+      </Geometry>
+      <Object exitX="0.5" exitY="0.363" entryX="0.5" entryY="0.363" endArrow="block" strokeColor="#344054" fontColor="#1f2937" fontSize="12" labelBackgroundColor="#ffffff" as="style" />
+    </Cell>
+    <Cell id="m6" value="my-max-graph render checkout.xml" edge="1" parent="1" source="agentSpine" target="cliSpine">
+      <Geometry relative="1" as="geometry">
+        <Point _x="0" _y="-11" as="offset" />
+      </Geometry>
+      <Object exitX="0.5" exitY="0.442" entryX="0.5" entryY="0.442" endArrow="block" strokeColor="#344054" fontColor="#1f2937" fontSize="12" fontFamily="Courier New" labelBackgroundColor="#ffffff" as="style" />
+    </Cell>
+    <Cell id="m7" value="read" edge="1" parent="1" source="cliSpine" target="fileSpine">
+      <Geometry relative="1" as="geometry">
+        <Point _x="0" _y="-11" as="offset" />
+      </Geometry>
+      <Object exitX="0.5" exitY="0.508" entryX="0.5" entryY="0.508" endArrow="block" strokeColor="#344054" fontColor="#1f2937" fontSize="12" labelBackgroundColor="#ffffff" as="style" />
+    </Cell>
+    <Cell id="m8" value="checkout.png, checkout.svg" edge="1" parent="1" source="cliSpine" target="agentSpine">
+      <Geometry relative="1" as="geometry">
+        <Point _x="0" _y="-11" as="offset" />
+      </Geometry>
+      <Object exitX="0.5" exitY="0.574" entryX="0.5" entryY="0.574" endArrow="block" strokeColor="#344054" fontColor="#1f2937" fontSize="12" fontFamily="Courier New" labelBackgroundColor="#ffffff" as="style" />
+    </Cell>
+
+    <!-- Agent self-check note -->
+    <Cell id="note1" value="looks at the PNG:&#10;the new edge crosses the queue box" vertex="1" parent="1">
+      <Geometry _x="660" _y="565" _width="210" _height="52" as="geometry" />
+      <Object rounded="0" fillColor="#fffbe6" strokeColor="#d6b656" dashed="1" fontColor="#6b5b1e" fontSize="11" fontStyle="2" whiteSpace="wrap" as="style" />
+    </Cell>
+
+    <Cell id="m9" value="fix: nudge the edge waypoint" edge="1" parent="1" source="agentSpine" target="fileSpine">
+      <Geometry relative="1" as="geometry">
+        <Point _x="0" _y="-11" as="offset" />
+      </Geometry>
+      <Object exitX="0.5" exitY="0.745" entryX="0.5" entryY="0.745" endArrow="block" strokeColor="#344054" fontColor="#1f2937" fontSize="12" labelBackgroundColor="#ffffff" as="style" />
+    </Cell>
+    <Cell id="m10" value="live sync (file watch)" edge="1" parent="1" source="fileSpine" target="browserSpine">
+      <Geometry relative="1" as="geometry">
+        <Point _x="0" _y="-11" as="offset" />
+      </Geometry>
+      <Object exitX="0.5" exitY="0.811" entryX="0.5" entryY="0.811" endArrow="block" dashed="1" strokeColor="#82b366" fontColor="#4e7d3c" fontSize="12" labelBackgroundColor="#ffffff" as="style" />
+    </Cell>
+    <Cell id="m11" value="canvas updates" edge="1" parent="1" source="browserSpine" target="youSpine">
+      <Geometry relative="1" as="geometry">
+        <Point _x="0" _y="-11" as="offset" />
+      </Geometry>
+      <Object exitX="0.5" exitY="0.876" entryX="0.5" entryY="0.876" endArrow="block" dashed="1" strokeColor="#82b366" fontColor="#4e7d3c" fontSize="12" labelBackgroundColor="#ffffff" as="style" />
+    </Cell>
+
+    <!-- Caption -->
+    <Cell id="caption" value="one round: both of you edited the same file, both of you judged the same picture" vertex="1" parent="1">
+      <Geometry _x="245" _y="880" _width="800" _height="30" as="geometry" />
+      <Object fillColor="none" strokeColor="none" fontColor="#6b7280" fontSize="13" fontStyle="2" as="style" />
+    </Cell>
+  </root>
+</GraphDataModel>

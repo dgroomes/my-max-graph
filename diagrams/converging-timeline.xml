@@ -1,0 +1,134 @@
+<GraphDataModel>
+  <root>
+    <Cell id="0">
+      <Object as="style" />
+    </Cell>
+    <Cell id="1" parent="0">
+      <Object as="style" />
+    </Cell>
+
+    <Cell id="prompt" value="$ git log --oneline checkout.xml" vertex="1" parent="1">
+      <Geometry _x="60" _y="50" _width="330" _height="42" as="geometry" />
+      <Object rounded="0" fillColor="#1f2937" strokeColor="#1f2937" fontColor="#e5e7eb" fontSize="13" fontFamily="Courier New" align="left" spacingLeft="14" as="style" />
+    </Cell>
+
+    <Cell id="axis" value="" edge="1" parent="1">
+      <Geometry relative="1" as="geometry">
+        <Point _x="60" _y="310" as="sourcePoint" />
+        <Point _x="1240" _y="310" as="targetPoint" />
+      </Geometry>
+      <Object endArrow="block" strokeWidth="2.5" strokeColor="#9ca3af" as="style" />
+    </Cell>
+
+    <!-- Commit dots: red = you, violet = agent -->
+    <Cell id="d1" value="" vertex="1" parent="1">
+      <Geometry _x="150" _y="300" _width="20" _height="20" as="geometry" />
+      <Object shape="ellipse" fillColor="#f8cecc" strokeColor="#b85450" strokeWidth="2" as="style" />
+    </Cell>
+    <Cell id="d2" value="" vertex="1" parent="1">
+      <Geometry _x="370" _y="300" _width="20" _height="20" as="geometry" />
+      <Object shape="ellipse" fillColor="#e1d5e7" strokeColor="#9673a6" strokeWidth="2" as="style" />
+    </Cell>
+    <Cell id="d3" value="" vertex="1" parent="1">
+      <Geometry _x="590" _y="300" _width="20" _height="20" as="geometry" />
+      <Object shape="ellipse" fillColor="#e1d5e7" strokeColor="#9673a6" strokeWidth="2" as="style" />
+    </Cell>
+    <Cell id="d4" value="" vertex="1" parent="1">
+      <Geometry _x="810" _y="300" _width="20" _height="20" as="geometry" />
+      <Object shape="ellipse" fillColor="#f8cecc" strokeColor="#b85450" strokeWidth="2" as="style" />
+    </Cell>
+    <Cell id="d5" value="" vertex="1" parent="1">
+      <Geometry _x="1030" _y="300" _width="20" _height="20" as="geometry" />
+      <Object shape="ellipse" fillColor="#e1d5e7" strokeColor="#9673a6" strokeWidth="2" as="style" />
+    </Cell>
+
+    <!-- Short hashes -->
+    <Cell id="h1" value="3fa9c01" vertex="1" parent="1">
+      <Geometry _x="120" _y="328" _width="80" _height="20" as="geometry" />
+      <Object fillColor="none" strokeColor="none" fontColor="#9ca3af" fontSize="11" fontFamily="Courier New" as="style" />
+    </Cell>
+    <Cell id="h2" value="7be22d4" vertex="1" parent="1">
+      <Geometry _x="340" _y="270" _width="80" _height="20" as="geometry" />
+      <Object fillColor="none" strokeColor="none" fontColor="#9ca3af" fontSize="11" fontFamily="Courier New" as="style" />
+    </Cell>
+    <Cell id="h3" value="91c003a" vertex="1" parent="1">
+      <Geometry _x="560" _y="328" _width="80" _height="20" as="geometry" />
+      <Object fillColor="none" strokeColor="none" fontColor="#9ca3af" fontSize="11" fontFamily="Courier New" as="style" />
+    </Cell>
+    <Cell id="h4" value="c67d1f2" vertex="1" parent="1">
+      <Geometry _x="780" _y="270" _width="80" _height="20" as="geometry" />
+      <Object fillColor="none" strokeColor="none" fontColor="#9ca3af" fontSize="11" fontFamily="Courier New" as="style" />
+    </Cell>
+    <Cell id="h5" value="e08a445" vertex="1" parent="1">
+      <Geometry _x="1000" _y="328" _width="80" _height="20" as="geometry" />
+      <Object fillColor="none" strokeColor="none" fontColor="#9ca3af" fontSize="11" fontFamily="Courier New" as="style" />
+    </Cell>
+
+    <!-- Commit cards, alternating above/below -->
+    <Cell id="c1" value="you: rough boxes thrown&#10;onto the canvas&#10;(browser)" vertex="1" parent="1">
+      <Geometry _x="50" _y="150" _width="220" _height="80" as="geometry" />
+      <Object rounded="1" fillColor="#ffffff" strokeColor="#b85450" fontColor="#1f2937" fontSize="12" whiteSpace="wrap" as="style" />
+    </Cell>
+    <Cell id="c2" value="agent: real names, grid&#10;alignment, one accent color&#10;(XML edit)" vertex="1" parent="1">
+      <Geometry _x="270" _y="390" _width="220" _height="80" as="geometry" />
+      <Object rounded="1" fillColor="#ffffff" strokeColor="#9673a6" fontColor="#1f2937" fontSize="12" whiteSpace="wrap" as="style" />
+    </Cell>
+    <Cell id="c3" value="agent: rendered, saw two labels&#10;collide, nudged the spacing&#10;(render + look loop)" vertex="1" parent="1">
+      <Geometry _x="490" _y="150" _width="220" _height="80" as="geometry" />
+      <Object rounded="1" fillColor="#ffffff" strokeColor="#9673a6" fontColor="#1f2937" fontSize="12" whiteSpace="wrap" as="style" />
+    </Cell>
+    <Cell id="c4" value="you: dragged the queue between&#10;the two services&#10;(browser)" vertex="1" parent="1">
+      <Geometry _x="710" _y="390" _width="220" _height="80" as="geometry" />
+      <Object rounded="1" fillColor="#ffffff" strokeColor="#b85450" fontColor="#1f2937" fontSize="12" whiteSpace="wrap" as="style" />
+    </Cell>
+    <Cell id="c5" value="agent: orthogonal edges, dashed&#10;trust boundary around payments&#10;(XML edit)" vertex="1" parent="1">
+      <Geometry _x="930" _y="150" _width="220" _height="80" as="geometry" />
+      <Object rounded="1" fillColor="#ffffff" strokeColor="#9673a6" fontColor="#1f2937" fontSize="12" whiteSpace="wrap" as="style" />
+    </Cell>
+
+    <!-- Card-to-dot connectors -->
+    <Cell id="l1" value="" edge="1" parent="1" source="c1" target="d1">
+      <Geometry relative="1" as="geometry" />
+      <Object exitX="0.5" exitY="1" entryX="0.5" entryY="0" endArrow="none" strokeColor="#d1d5db" as="style" />
+    </Cell>
+    <Cell id="l2" value="" edge="1" parent="1" source="c2" target="d2">
+      <Geometry relative="1" as="geometry" />
+      <Object exitX="0.5" exitY="0" entryX="0.5" entryY="1" endArrow="none" strokeColor="#d1d5db" as="style" />
+    </Cell>
+    <Cell id="l3" value="" edge="1" parent="1" source="c3" target="d3">
+      <Geometry relative="1" as="geometry" />
+      <Object exitX="0.5" exitY="1" entryX="0.5" entryY="0" endArrow="none" strokeColor="#d1d5db" as="style" />
+    </Cell>
+    <Cell id="l4" value="" edge="1" parent="1" source="c4" target="d4">
+      <Geometry relative="1" as="geometry" />
+      <Object exitX="0.5" exitY="0" entryX="0.5" entryY="1" endArrow="none" strokeColor="#d1d5db" as="style" />
+    </Cell>
+    <Cell id="l5" value="" edge="1" parent="1" source="c5" target="d5">
+      <Geometry relative="1" as="geometry" />
+      <Object exitX="0.5" exitY="1" entryX="0.5" entryY="0" endArrow="none" strokeColor="#d1d5db" as="style" />
+    </Cell>
+
+    <!-- Legend and closing caption -->
+    <Cell id="legendYou" value="" vertex="1" parent="1">
+      <Geometry _x="60" _y="500" _width="14" _height="14" as="geometry" />
+      <Object shape="ellipse" fillColor="#f8cecc" strokeColor="#b85450" as="style" />
+    </Cell>
+    <Cell id="legendYouText" value="you" vertex="1" parent="1">
+      <Geometry _x="80" _y="497" _width="50" _height="20" as="geometry" />
+      <Object fillColor="none" strokeColor="none" fontColor="#6b7280" fontSize="12" align="left" as="style" />
+    </Cell>
+    <Cell id="legendAgent" value="" vertex="1" parent="1">
+      <Geometry _x="130" _y="500" _width="14" _height="14" as="geometry" />
+      <Object shape="ellipse" fillColor="#e1d5e7" strokeColor="#9673a6" as="style" />
+    </Cell>
+    <Cell id="legendAgentText" value="agent" vertex="1" parent="1">
+      <Geometry _x="150" _y="497" _width="60" _height="20" as="geometry" />
+      <Object fillColor="none" strokeColor="none" fontColor="#6b7280" fontSize="12" align="left" as="style" />
+    </Cell>
+
+    <Cell id="closing" value="five small diffs later: a diagram worth keeping" vertex="1" parent="1">
+      <Geometry _x="900" _y="497" _width="340" _height="24" as="geometry" />
+      <Object fillColor="none" strokeColor="none" fontColor="#6b7280" fontSize="13" fontStyle="2" align="right" as="style" />
+    </Cell>
+  </root>
+</GraphDataModel>

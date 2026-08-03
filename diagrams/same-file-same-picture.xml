@@ -1,0 +1,95 @@
+<GraphDataModel>
+  <root>
+    <Cell id="0">
+      <Object as="style" />
+    </Cell>
+    <Cell id="1" parent="0">
+      <Object as="style" />
+    </Cell>
+
+    <Cell id="file" value="diagram.xml" vertex="1" parent="1">
+      <Geometry _x="470" _y="190" _width="260" _height="120" as="geometry" />
+      <Object rounded="1" fillColor="#d5e8d4" strokeColor="#82b366" strokeWidth="2" shadow="1" fontColor="#1f2937" fontSize="24" fontFamily="Courier New" fontStyle="1" as="style" />
+    </Cell>
+
+    <Cell id="youThumb" value="" vertex="1" parent="1">
+      <Geometry _x="95" _y="55" _width="170" _height="95" as="geometry" />
+      <Object rounded="1" fillColor="#ffffff" strokeColor="#d1d5db" as="style" />
+    </Cell>
+    <Cell id="youThumbA" value="" vertex="1" parent="youThumb">
+      <Geometry _x="18" _y="18" _width="48" _height="26" as="geometry" />
+      <Object rounded="1" fillColor="#dae8fc" strokeColor="#6c8ebf" as="style" />
+    </Cell>
+    <Cell id="youThumbB" value="" vertex="1" parent="youThumb">
+      <Geometry _x="104" _y="52" _width="48" _height="26" as="geometry" />
+      <Object rounded="1" fillColor="#fff2cc" strokeColor="#d6b656" as="style" />
+    </Cell>
+    <Cell id="youThumbEdge" value="" edge="1" parent="youThumb" source="youThumbA" target="youThumbB">
+      <Geometry relative="1" as="geometry" />
+      <Object endArrow="block" strokeColor="#344054" as="style" />
+    </Cell>
+    <Cell id="youThumbCap" value="what you see (browser)" vertex="1" parent="1">
+      <Geometry _x="80" _y="152" _width="200" _height="22" as="geometry" />
+      <Object fillColor="none" strokeColor="none" fontColor="#9ca3af" fontSize="11" fontStyle="2" as="style" />
+    </Cell>
+
+    <Cell id="agentThumb" value="" vertex="1" parent="1">
+      <Geometry _x="935" _y="55" _width="170" _height="95" as="geometry" />
+      <Object rounded="1" fillColor="#ffffff" strokeColor="#d1d5db" as="style" />
+    </Cell>
+    <Cell id="agentThumbA" value="" vertex="1" parent="agentThumb">
+      <Geometry _x="18" _y="18" _width="48" _height="26" as="geometry" />
+      <Object rounded="1" fillColor="#dae8fc" strokeColor="#6c8ebf" as="style" />
+    </Cell>
+    <Cell id="agentThumbB" value="" vertex="1" parent="agentThumb">
+      <Geometry _x="104" _y="52" _width="48" _height="26" as="geometry" />
+      <Object rounded="1" fillColor="#fff2cc" strokeColor="#d6b656" as="style" />
+    </Cell>
+    <Cell id="agentThumbEdge" value="" edge="1" parent="agentThumb" source="agentThumbA" target="agentThumbB">
+      <Geometry relative="1" as="geometry" />
+      <Object endArrow="block" strokeColor="#344054" as="style" />
+    </Cell>
+    <Cell id="agentThumbCap" value="what the agent sees (render)" vertex="1" parent="1">
+      <Geometry _x="920" _y="152" _width="200" _height="22" as="geometry" />
+      <Object fillColor="none" strokeColor="none" fontColor="#9ca3af" fontSize="11" fontStyle="2" as="style" />
+    </Cell>
+
+    <Cell id="youName" value="you" vertex="1" parent="1">
+      <Geometry _x="90" _y="205" _width="180" _height="50" as="geometry" />
+      <Object fillColor="none" strokeColor="none" fontColor="#111827" fontSize="34" fontStyle="1" as="style" />
+    </Cell>
+    <Cell id="youSub" value="drags boxes in the browser" vertex="1" parent="1">
+      <Geometry _x="80" _y="255" _width="200" _height="26" as="geometry" />
+      <Object fillColor="none" strokeColor="none" fontColor="#6b7280" fontSize="13" as="style" />
+    </Cell>
+
+    <Cell id="agentName" value="an agent" vertex="1" parent="1">
+      <Geometry _x="930" _y="205" _width="180" _height="50" as="geometry" />
+      <Object fillColor="none" strokeColor="none" fontColor="#111827" fontSize="34" fontStyle="1" as="style" />
+    </Cell>
+    <Cell id="agentSub" value="edits the XML, renders to check" vertex="1" parent="1">
+      <Geometry _x="920" _y="255" _width="200" _height="26" as="geometry" />
+      <Object fillColor="none" strokeColor="none" fontColor="#6b7280" fontSize="13" as="style" />
+    </Cell>
+
+    <Cell id="leftArrow" value="" edge="1" parent="1">
+      <Geometry relative="1" as="geometry">
+        <Point _x="295" _y="250" as="sourcePoint" />
+        <Point _x="455" _y="250" as="targetPoint" />
+      </Geometry>
+      <Object startArrow="block" endArrow="block" strokeWidth="2.5" strokeColor="#344054" as="style" />
+    </Cell>
+    <Cell id="rightArrow" value="" edge="1" parent="1">
+      <Geometry relative="1" as="geometry">
+        <Point _x="905" _y="250" as="sourcePoint" />
+        <Point _x="745" _y="250" as="targetPoint" />
+      </Geometry>
+      <Object startArrow="block" endArrow="block" strokeWidth="2.5" strokeColor="#344054" as="style" />
+    </Cell>
+
+    <Cell id="statement" value="same file. same picture." vertex="1" parent="1">
+      <Geometry _x="400" _y="400" _width="400" _height="40" as="geometry" />
+      <Object fillColor="none" strokeColor="none" fontColor="#111827" fontSize="22" fontStyle="1" as="style" />
+    </Cell>
+  </root>
+</GraphDataModel>

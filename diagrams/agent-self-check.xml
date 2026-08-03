@@ -1,0 +1,96 @@
+<GraphDataModel>
+  <root>
+    <Cell id="0">
+      <Object as="style" />
+    </Cell>
+    <Cell id="1" parent="0">
+      <Object as="style" />
+    </Cell>
+
+    <Cell id="ask" value="&quot;group the services, give them dashed borders&quot;" vertex="1" parent="1">
+      <Geometry _x="430" _y="40" _width="340" _height="50" as="geometry" />
+      <Object rounded="1" fillColor="#f8cecc" strokeColor="#b85450" fontColor="#7f1d1d" fontSize="13" fontStyle="2" whiteSpace="wrap" as="style" />
+    </Cell>
+
+    <Cell id="read" value="read diagram.xml" vertex="1" parent="1">
+      <Geometry _x="490" _y="140" _width="220" _height="54" as="geometry" />
+      <Object rounded="1" fillColor="#ffffff" strokeColor="#344054" fontColor="#1f2937" fontSize="14" as="style" />
+    </Cell>
+
+    <Cell id="edit" value="edit the XML" vertex="1" parent="1">
+      <Geometry _x="490" _y="244" _width="220" _height="54" as="geometry" />
+      <Object rounded="1" fillColor="#e1d5e7" strokeColor="#9673a6" fontColor="#1f2937" fontSize="14" fontStyle="1" as="style" />
+    </Cell>
+
+    <Cell id="render" value="$ my-max-graph render diagram.xml" vertex="1" parent="1">
+      <Geometry _x="440" _y="348" _width="320" _height="54" as="geometry" />
+      <Object rounded="0" fillColor="#1f2937" strokeColor="#1f2937" fontColor="#e5e7eb" fontSize="13" fontFamily="Courier New" as="style" />
+    </Cell>
+
+    <Cell id="look" value="look at diagram.png" vertex="1" parent="1">
+      <Geometry _x="490" _y="452" _width="220" _height="54" as="geometry" />
+      <Object rounded="1" fillColor="#ffffff" strokeColor="#344054" fontColor="#1f2937" fontSize="14" as="style" />
+    </Cell>
+    <Cell id="pixelsNote" value="the same pixels you&#39;d see&#10;in the browser" vertex="1" parent="1">
+      <Geometry _x="780" _y="452" _width="190" _height="54" as="geometry" />
+      <Object rounded="0" fillColor="#fffbe6" strokeColor="#d6b656" dashed="1" fontColor="#6b5b1e" fontSize="11" fontStyle="2" whiteSpace="wrap" as="style" />
+    </Cell>
+
+    <Cell id="check" value="matches&#10;intent?" vertex="1" parent="1">
+      <Geometry _x="515" _y="556" _width="170" _height="96" as="geometry" />
+      <Object shape="rhombus" fillColor="#fff2cc" strokeColor="#d6b656" fontColor="#1f2937" fontSize="13" fontStyle="1" as="style" />
+    </Cell>
+
+    <Cell id="done" value="hand back to you:&#10;the picture and the git diff" vertex="1" parent="1">
+      <Geometry _x="460" _y="712" _width="280" _height="60" as="geometry" />
+      <Object rounded="1" fillColor="#d5e8d4" strokeColor="#82b366" fontColor="#1f2937" fontSize="13" whiteSpace="wrap" as="style" />
+    </Cell>
+
+    <Cell id="e1" value="" edge="1" parent="1" source="ask" target="read">
+      <Geometry relative="1" as="geometry" />
+      <Object endArrow="block" strokeColor="#344054" as="style" />
+    </Cell>
+    <Cell id="e2" value="" edge="1" parent="1" source="read" target="edit">
+      <Geometry relative="1" as="geometry" />
+      <Object endArrow="block" strokeColor="#344054" as="style" />
+    </Cell>
+    <Cell id="e3" value="" edge="1" parent="1" source="edit" target="render">
+      <Geometry relative="1" as="geometry" />
+      <Object endArrow="block" strokeColor="#344054" as="style" />
+    </Cell>
+    <Cell id="e4" value="" edge="1" parent="1" source="render" target="look">
+      <Geometry relative="1" as="geometry" />
+      <Object endArrow="block" strokeColor="#344054" as="style" />
+    </Cell>
+    <Cell id="e5" value="" edge="1" parent="1" source="look" target="check">
+      <Geometry relative="1" as="geometry" />
+      <Object endArrow="block" strokeColor="#344054" as="style" />
+    </Cell>
+    <Cell id="e6" value="yes" edge="1" parent="1" source="check" target="done">
+      <Geometry relative="1" as="geometry">
+        <Point _x="14" _y="0" as="offset" />
+      </Geometry>
+      <Object exitX="0.5" exitY="1" entryX="0.5" entryY="0" endArrow="block" strokeColor="#344054" fontColor="#1f2937" fontSize="12" fontStyle="1" as="style" />
+    </Cell>
+    <Cell id="loop" value="no: fix it" edge="1" parent="1" source="check" target="edit">
+      <Geometry relative="1" as="geometry">
+        <Array as="points">
+          <Point _x="360" _y="604" />
+          <Point _x="360" _y="271" />
+        </Array>
+        <Point _x="0" _y="-12" as="offset" />
+      </Geometry>
+      <Object exitX="0" exitY="0.5" entryX="0" entryY="0.5" rounded="1" endArrow="block" strokeColor="#9673a6" fontColor="#7c3aed" fontSize="12" fontStyle="1" labelBackgroundColor="#ffffff" as="style" />
+    </Cell>
+
+    <Cell id="loopNote" value="as many rounds&#10;as it takes" vertex="1" parent="1">
+      <Geometry _x="175" _y="480" _width="130" _height="40" as="geometry" />
+      <Object fillColor="none" strokeColor="none" fontColor="#9ca3af" fontSize="12" fontStyle="2" as="style" />
+    </Cell>
+
+    <Cell id="noteTether" value="" edge="1" parent="1" source="pixelsNote" target="look">
+      <Geometry relative="1" as="geometry" />
+      <Object exitX="0" exitY="0.5" entryX="1" entryY="0.5" dashed="1" dashPattern="1 3" endArrow="none" strokeColor="#d6b656" as="style" />
+    </Cell>
+  </root>
+</GraphDataModel>

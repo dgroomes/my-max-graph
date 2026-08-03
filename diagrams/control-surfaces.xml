@@ -1,0 +1,83 @@
+<GraphDataModel>
+  <root>
+    <Cell id="0">
+      <Object as="style" />
+    </Cell>
+    <Cell id="1" parent="0">
+      <Object as="style" />
+    </Cell>
+
+    <Cell id="youPanel" value="your control surface: the browser" vertex="1" parent="1">
+      <Geometry _x="80" _y="60" _width="380" _height="330" as="geometry" />
+      <Object shape="swimlane" startSize="36" rounded="1" fillColor="#dae8fc" strokeColor="#6c8ebf" swimlaneFillColor="#ffffff" fontColor="#1f2937" fontSize="14" fontStyle="1" as="style" />
+    </Cell>
+    <Cell id="y1" value="drag a box" vertex="1" parent="youPanel">
+      <Geometry _x="30" _y="56" _width="320" _height="40" as="geometry" />
+      <Object rounded="1" fillColor="#ffffff" strokeColor="#6c8ebf" fontColor="#1f2937" fontSize="13" as="style" />
+    </Cell>
+    <Cell id="y2" value="draw an arrow" vertex="1" parent="youPanel">
+      <Geometry _x="30" _y="110" _width="320" _height="40" as="geometry" />
+      <Object rounded="1" fillColor="#ffffff" strokeColor="#6c8ebf" fontColor="#1f2937" fontSize="13" as="style" />
+    </Cell>
+    <Cell id="y3" value="add a node" vertex="1" parent="youPanel">
+      <Geometry _x="30" _y="164" _width="320" _height="40" as="geometry" />
+      <Object rounded="1" fillColor="#ffffff" strokeColor="#6c8ebf" fontColor="#1f2937" fontSize="13" as="style" />
+    </Cell>
+    <Cell id="y4" value="undo, redo, delete" vertex="1" parent="youPanel">
+      <Geometry _x="30" _y="218" _width="320" _height="40" as="geometry" />
+      <Object rounded="1" fillColor="#ffffff" strokeColor="#6c8ebf" fontColor="#1f2937" fontSize="13" as="style" />
+    </Cell>
+    <Cell id="yNote" value="coarse, spatial, immediate" vertex="1" parent="youPanel">
+      <Geometry _x="30" _y="278" _width="320" _height="26" as="geometry" />
+      <Object fillColor="none" strokeColor="none" fontColor="#6b7280" fontSize="12" fontStyle="2" as="style" />
+    </Cell>
+
+    <Cell id="agentPanel" value="the agent&#39;s control surface: the repo + CLI" vertex="1" parent="1">
+      <Geometry _x="740" _y="60" _width="380" _height="330" as="geometry" />
+      <Object shape="swimlane" startSize="36" rounded="1" fillColor="#e1d5e7" strokeColor="#9673a6" swimlaneFillColor="#ffffff" fontColor="#1f2937" fontSize="14" fontStyle="1" as="style" />
+    </Cell>
+    <Cell id="a1" value="edit the XML like any source file" vertex="1" parent="agentPanel">
+      <Geometry _x="30" _y="56" _width="320" _height="40" as="geometry" />
+      <Object rounded="1" fillColor="#ffffff" strokeColor="#9673a6" fontColor="#1f2937" fontSize="13" as="style" />
+    </Cell>
+    <Cell id="a2" value="$ my-max-graph render" vertex="1" parent="agentPanel">
+      <Geometry _x="30" _y="110" _width="320" _height="40" as="geometry" />
+      <Object rounded="0" fillColor="#1f2937" strokeColor="#1f2937" fontColor="#e5e7eb" fontSize="13" fontFamily="Courier New" as="style" />
+    </Cell>
+    <Cell id="a3" value="inspect the PNG (vision)" vertex="1" parent="agentPanel">
+      <Geometry _x="30" _y="164" _width="320" _height="40" as="geometry" />
+      <Object rounded="1" fillColor="#ffffff" strokeColor="#9673a6" fontColor="#1f2937" fontSize="13" as="style" />
+    </Cell>
+    <Cell id="a4" value="read the git diff" vertex="1" parent="agentPanel">
+      <Geometry _x="30" _y="218" _width="320" _height="40" as="geometry" />
+      <Object rounded="1" fillColor="#ffffff" strokeColor="#9673a6" fontColor="#1f2937" fontSize="13" as="style" />
+    </Cell>
+    <Cell id="aNote" value="precise, tireless, verifiable" vertex="1" parent="agentPanel">
+      <Geometry _x="30" _y="278" _width="320" _height="26" as="geometry" />
+      <Object fillColor="none" strokeColor="none" fontColor="#6b7280" fontSize="12" fontStyle="2" as="style" />
+    </Cell>
+
+    <Cell id="file" value="diagram.xml" vertex="1" parent="1">
+      <Geometry _x="490" _y="480" _width="220" _height="70" as="geometry" />
+      <Object rounded="1" fillColor="#d5e8d4" strokeColor="#82b366" strokeWidth="2" fontColor="#1f2937" fontSize="18" fontFamily="Courier New" fontStyle="1" as="style" />
+    </Cell>
+
+    <Cell id="youWire" value="live sync" edge="1" parent="1" source="youPanel" target="file">
+      <Geometry relative="1" as="geometry">
+        <Point _x="0" _y="-12" as="offset" />
+      </Geometry>
+      <Object edgeStyle="orthogonalEdgeStyle" rounded="1" exitX="0.5" exitY="1" entryX="0.2" entryY="0" startArrow="block" endArrow="block" strokeWidth="2" strokeColor="#6c8ebf" fontColor="#3b5b82" fontSize="12" labelBackgroundColor="#ffffff" as="style" />
+    </Cell>
+    <Cell id="agentWire" value="reads and writes" edge="1" parent="1" source="agentPanel" target="file">
+      <Geometry relative="1" as="geometry">
+        <Point _x="0" _y="-12" as="offset" />
+      </Geometry>
+      <Object edgeStyle="orthogonalEdgeStyle" rounded="1" exitX="0.5" exitY="1" entryX="0.8" entryY="0" startArrow="block" endArrow="block" strokeWidth="2" strokeColor="#9673a6" fontColor="#5b3b82" fontSize="12" labelBackgroundColor="#ffffff" as="style" />
+    </Cell>
+
+    <Cell id="caption" value="different hands. the same artifact." vertex="1" parent="1">
+      <Geometry _x="400" _y="590" _width="400" _height="30" as="geometry" />
+      <Object fillColor="none" strokeColor="none" fontColor="#111827" fontSize="16" fontStyle="1" as="style" />
+    </Cell>
+  </root>
+</GraphDataModel>

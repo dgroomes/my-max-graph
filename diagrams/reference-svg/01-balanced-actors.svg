@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 360" role="img" aria-labelledby="title desc">
+  <title id="title">Balanced actors</title><desc id="desc">You and the agent act symmetrically on a shared diagram XML file, with browser and rendered views above and below.</desc>
+  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 8 4 0 8z" fill="#344054"/></marker></defs>
+  <rect width="760" height="360" rx="18" fill="#f8fafc"/><g font-family="system-ui,sans-serif" text-anchor="middle" fill="#172033">
+  <text x="380" y="32" font-size="16" font-weight="700">BALANCED ACTORS</text>
+  <g fill="none" stroke="#344054" stroke-width="2" marker-end="url(#arrow)"><path d="M190 180H300"/><path d="M570 180H460"/><path d="M380 140V98"/><path d="M380 220V262"/></g>
+  <g stroke-width="2"><rect x="50" y="140" width="140" height="80" rx="40" fill="#fff7ed" stroke="#c2410c"/><rect x="570" y="140" width="140" height="80" rx="40" fill="#f5f3ff" stroke="#7c3aed"/><rect x="300" y="140" width="160" height="80" rx="12" fill="#ecfdf3" stroke="#16803c"/><rect x="300" y="50" width="160" height="48" rx="10" fill="#eff6ff" stroke="#2563eb"/><rect x="300" y="262" width="160" height="48" rx="10" fill="#fff" stroke="#667085"/></g>
+  <g font-size="15" font-weight="650"><text x="120" y="185">YOU</text><text x="640" y="185">AGENT</text><text x="380" y="174">DIAGRAM XML</text><text x="380" y="194" font-size="12" font-weight="400">shared source of truth</text><text x="380" y="80">BROWSER VIEW</text><text x="380" y="292">RENDERED IMAGE</text></g>
+  <g font-size="12" fill="#475467"><text x="244" y="170">edit</text><text x="516" y="170">edit</text><text x="412" y="120">sync</text><text x="412" y="246">render</text></g></g>
+</svg>

@@ -1,0 +1,65 @@
+<GraphDataModel>
+  <root>
+    <Cell id="0"><Object as="style" /></Cell>
+    <Cell id="1" parent="0"><Object as="style" /></Cell>
+    <Cell id="background" value="" vertex="1" parent="1">
+      <Geometry _x="0" _y="0" _width="760" _height="360" as="geometry" />
+      <Object rounded="1" arcSize="8" fillColor="#fffdf8" strokeColor="none" as="style" />
+    </Cell>
+    <Cell id="2" value="CONTINUOUS FLOW" vertex="1" parent="1">
+      <Geometry _x="280" _y="0" _width="200" _height="32" as="geometry" />
+      <Object fontFamily="Arial" fontColor="#172033" strokeColor="none" fillColor="none" whiteSpace="wrap" html="0" fontSize="16" fontStyle="1" align="center" verticalAlign="middle" as="style" />
+    </Cell>
+    <Cell id="3" value="" vertex="1" parent="1">
+      <Geometry _x="30" _y="90" _width="120" _height="120" as="geometry" />
+      <Object strokeWidth="2" shape="ellipse" fillColor="#fff7ed" strokeColor="#667085" as="style" />
+    </Cell>
+    <Cell id="3-title" value="INTENT" vertex="1" parent="3"><Geometry _x="0" _y="37" _width="120" _height="24" as="geometry" /><Object fontFamily="Arial" fontColor="#172033" fontSize="14" fontStyle="1" strokeColor="none" fillColor="none" as="style" /></Cell>
+    <Cell id="3-subtitle" value="you or agent" vertex="1" parent="3"><Geometry _x="0" _y="61" _width="120" _height="20" as="geometry" /><Object fontFamily="Arial" fontColor="#475467" fontSize="11" strokeColor="none" fillColor="none" as="style" /></Cell>
+    <Cell id="4" value="" vertex="1" parent="1">
+      <Geometry _x="210" _y="90" _width="120" _height="120" as="geometry" />
+      <Object strokeWidth="2" shape="ellipse" fillColor="#ecfdf3" strokeColor="#667085" as="style" />
+    </Cell>
+    <Cell id="4-title" value="EDIT" vertex="1" parent="4"><Geometry _x="0" _y="37" _width="120" _height="24" as="geometry" /><Object fontFamily="Arial" fontColor="#172033" fontSize="14" fontStyle="1" strokeColor="none" fillColor="none" as="style" /></Cell>
+    <Cell id="4-subtitle" value="diagram XML" vertex="1" parent="4"><Geometry _x="0" _y="61" _width="120" _height="20" as="geometry" /><Object fontFamily="Arial" fontColor="#475467" fontSize="11" strokeColor="none" fillColor="none" as="style" /></Cell>
+    <Cell id="5" value="" vertex="1" parent="1">
+      <Geometry _x="390" _y="90" _width="120" _height="120" as="geometry" />
+      <Object strokeWidth="2" shape="ellipse" fillColor="#eff6ff" strokeColor="#667085" as="style" />
+    </Cell>
+    <Cell id="5-title" value="VIEW" vertex="1" parent="5"><Geometry _x="0" _y="37" _width="120" _height="24" as="geometry" /><Object fontFamily="Arial" fontColor="#172033" fontSize="14" fontStyle="1" strokeColor="none" fillColor="none" as="style" /></Cell>
+    <Cell id="5-subtitle" value="live browser" vertex="1" parent="5"><Geometry _x="0" _y="61" _width="120" _height="20" as="geometry" /><Object fontFamily="Arial" fontColor="#475467" fontSize="11" strokeColor="none" fillColor="none" as="style" /></Cell>
+    <Cell id="6" value="" vertex="1" parent="1">
+      <Geometry _x="570" _y="90" _width="120" _height="120" as="geometry" />
+      <Object strokeWidth="2" shape="ellipse" fillColor="#f5f3ff" strokeColor="#667085" as="style" />
+    </Cell>
+    <Cell id="6-title" value="REVIEW" vertex="1" parent="6"><Geometry _x="0" _y="37" _width="120" _height="24" as="geometry" /><Object fontFamily="Arial" fontColor="#172033" fontSize="14" fontStyle="1" strokeColor="none" fillColor="none" as="style" /></Cell>
+    <Cell id="6-subtitle" value="render or vision" vertex="1" parent="6"><Geometry _x="0" _y="61" _width="120" _height="20" as="geometry" /><Object fontFamily="Arial" fontColor="#475467" fontSize="11" strokeColor="none" fillColor="none" as="style" /></Cell>
+    <Cell id="7" value="refine until the diagram says exactly enough" vertex="1" parent="1">
+      <Geometry _x="230" _y="298" _width="300" _height="24" as="geometry" />
+      <Object fontFamily="Arial" fontColor="#475467" strokeColor="none" fillColor="none" whiteSpace="wrap" html="0" fontSize="12" align="center" verticalAlign="middle" as="style" />
+    </Cell>
+    <Cell id="8" value="" edge="1" parent="1" source="3" target="4">
+      <Geometry relative="1" as="geometry" />
+      <Object edgeStyle="orthogonalEdgeStyle" orthogonalLoop="1" jettySize="auto" rounded="0" strokeColor="#344054" strokeWidth="2" endArrow="block" endFill="1" fontFamily="Arial" fontSize="12" fontColor="#475467" labelBackgroundColor="#ffffff" exitX="1" exitY="0.5" entryX="0" entryY="0.5" as="style" />
+    </Cell>
+    <Cell id="9" value="" edge="1" parent="1" source="4" target="5">
+      <Geometry relative="1" as="geometry" />
+      <Object edgeStyle="orthogonalEdgeStyle" orthogonalLoop="1" jettySize="auto" rounded="0" strokeColor="#344054" strokeWidth="2" endArrow="block" endFill="1" fontFamily="Arial" fontSize="12" fontColor="#475467" labelBackgroundColor="#ffffff" exitX="1" exitY="0.5" entryX="0" entryY="0.5" as="style" />
+    </Cell>
+    <Cell id="10" value="" edge="1" parent="1" source="5" target="6">
+      <Geometry relative="1" as="geometry" />
+      <Object edgeStyle="orthogonalEdgeStyle" orthogonalLoop="1" jettySize="auto" rounded="0" strokeColor="#344054" strokeWidth="2" endArrow="block" endFill="1" fontFamily="Arial" fontSize="12" fontColor="#475467" labelBackgroundColor="#ffffff" exitX="1" exitY="0.5" entryX="0" entryY="0.5" as="style" />
+    </Cell>
+    <Cell id="11" value="refine" edge="1" parent="1" source="6" target="3">
+      <Geometry relative="1" as="geometry">
+        <Array as="points">
+          <Point _x="720" _y="150" />
+          <Point _x="720" _y="280" />
+          <Point _x="90" _y="280" />
+        </Array>
+        <Point _x="0" _y="-12" as="offset" />
+      </Geometry>
+      <Object edgeStyle="orthogonalEdgeStyle" orthogonalLoop="1" jettySize="auto" rounded="0" strokeColor="#344054" strokeWidth="2" endArrow="block" endFill="1" fontFamily="Arial" fontSize="12" fontColor="#475467" labelBackgroundColor="#ffffff" exitX="1" exitY="0.5" entryX="0.5" entryY="1" as="style" />
+    </Cell>
+  </root>
+</GraphDataModel>

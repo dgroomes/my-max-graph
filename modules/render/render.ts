@@ -64,14 +64,19 @@ export async function renderDiagramArtifacts(options: RenderOptions): Promise<vo
       api.prepareForExport({ padding: 48, maxScale: 1.25 });
     });
 
-    const graphHandle = await page.$('#graph');
-    if (!graphHandle) {
-      throw new Error('Could not locate #graph in render mode');
-    }
-    await graphHandle.screenshot({ path: imagePath, type: 'png' });
-
     const svg = await page.evaluate(extractSvgMarkup);
     await writeFile(svgPath, svg.endsWith('\n') ? svg : `${svg}\n`, 'utf8');
+
+    // Render the already-cropped SVG in isolation so PNG and SVG have the
+    // same bounds. Screenshotting #graph captures the full editor viewport.
+    await page.setContent(
+      `<!doctype html><html><head><style>html,body{margin:0}</style></head><body>${svg}</body></html>`,
+    );
+    const svgHandle = await page.$('svg');
+    if (!svgHandle) {
+      throw new Error('Could not prepare the exported SVG for PNG rendering');
+    }
+    await svgHandle.screenshot({ path: imagePath, type: 'png' });
   } finally {
     await browser.close();
     ownedServer.stop();
@@ -86,6 +91,16 @@ function extractSvgMarkup() {
 
   const clone = svg.cloneNode(true) as SVGSVGElement;
   clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+  clone.removeAttribute('style');
+  for (const image of clone.querySelectorAll('image')) {
+    const href =
+      image.getAttribute('href') ??
+      image.getAttributeNS('http://www.w3.org/1999/xlink', 'href') ??
+      '';
+    if (/(?:expanded|collapsed)\.gif(?:$|\?)/.test(href)) {
+      image.remove();
+    }
+  }
 
   const bbox = svg.getBBox();
   const pad = 24;

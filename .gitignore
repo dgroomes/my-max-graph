@@ -4,3 +4,4 @@
 /dist/
 /.tsbuild/
 /node_modules/
+/diagrams/rendered/*.png

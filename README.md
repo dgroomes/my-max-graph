@@ -2,7 +2,7 @@
 
 My tooling over [maxGraph][max-graph] for diagramming software systems.
 
-![The my-max-graph loop](my-max-graph-flow.svg)
+![The my-max-graph collaboration loop](diagrams/rendered/my-max-graph-flow.svg)
 
 
 ## Overview
@@ -37,11 +37,11 @@ Instructions to agents: refresh the table below as this codebase evolves. Use th
 | `modules/browser/`       |       675 | React + maxGraph viewer with light edit controls                 |
 | `modules/cli/`           |       279 | Entrypoint, argument parsing, help, command dispatch, starter    |
 | `modules/diagram/`       |        39 | Shared diagram report types                                      |
-| `modules/render/`        |       136 | Headless (puppeteer) diagram rendering to PNG/SVG                |
+| `modules/render/`        |       151 | Headless (puppeteer) diagram rendering to PNG/SVG                |
 | `modules/server/`        |       262 | HTTP/WebSocket server; file watch                                |
 | `modules/shared/`        |       121 | Paths, Chrome launch, small helpers                              |
 | `public/ (static shell)` |       188 | HTML/CSS shell served to the browser (excludes generated app.js) |
-| **Total**                | **1,700** |                                                                  |
+| **Total**                | **1,715** |                                                                  |
 
 
 # Instructions
@@ -84,14 +84,16 @@ Follow these instructions to build and run `my-max-graph`.
 
 ## Wish List
 
-- [ ] IN PROGRESS tame the AI output and get a good base project
+- [x] DONE tame the AI output and get a good base project
   - DONE Hand edits
   - DONE Get rid of the "scripts" in package.json
 - [x] DONE Consider a shell script entrypoint and typical install. Go to Node first.
 - [x] DONE Go to Node. Bun takes away from the focus with its current showiness/churn.
-- [ ] IN PROGRESS Revisit the usage/concept diagram. Get symmetry between the user and agent (they are both actors). Drop the color from the connector lines and prefer orthogonal (90 degree angles) instead of direct.
+- [x] DONE (I used this to dog food. Lots of creations (unedited but promising) by GPT 5.6 Sol and Fable 5) Revisit the usage/concept diagram. Get symmetry between the user and agent (they are both actors). Drop the color from the connector lines and prefer orthogonal (90 degree angles) instead of direct.
 - [ ] SKIP (can't be done cheaply because V8 doesn't have APIs for this and there isn't a particularly foundational open source one that enables this; they come with bloat or are not widely used) Prettify the XML. It's important to be across multiple lines because we are version controlling it and the diff matters.
 - [ ] Consider examples. This is cart before the horse stuff. I need to actually get use out of this thing before deciding to flesh it out with examples. And if I do get use out of it, I want to encode those styles/examples/idioms as reference examples so that it accelerates future diagramming. Utlimately, this shouldn't get too exotic. My README style (-playground, Overview, Instructions of specifically formatted bulleted lists, Reference) is prior art for the leverage of repeating a fixed amount of conventions.
+- [ ] Agent skill. Make it lean. It could even be a sub-command of my-max-graph to just output a skill .md
+- [ ] import/export to mxGraph. I indeed need a version of this, but keep it light. No need to check a bunch of edge cases.
 
 
 ## Reference
