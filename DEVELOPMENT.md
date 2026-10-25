@@ -35,22 +35,22 @@ Follow these instructions to build and install `my-max-graph`. Run commands from
 The code is split into TypeScript modules under `modules/`.
 
 <!--
-Instructions to agents: refresh the table below as this codebase evolves. Use the following command to get active line counts (and/or edit that script as needed): `node scripts/module-line-counts.ts`
+Instructions to agents: run the Code Mix script and refresh the table below only when explicitly requested by the user. Do not run it as part of routine code changes. When requested, use `node scripts/module-line-counts.ts` to get active line counts (and/or edit that script as needed).
 -->
 
 | Module                   |     Lines | Role                                                             |
 |--------------------------|----------:|------------------------------------------------------------------|
-| `modules/browser/`       |       672 | React + maxGraph viewer and edit controls                        |
+| `modules/browser/`       |       680 | React + maxGraph viewer and edit controls                        |
 | `modules/cli/`           |       294 | Entrypoint, argument parsing, help, command dispatch, starter    |
 | `modules/diagram/`       |        37 | Shared diagram report types                                      |
 | `modules/render/`        |       148 | Headless (puppeteer) diagram rendering to PNG/SVG                |
 | `modules/server/`        |       259 | HTTP/WebSocket server; file watch                                |
 | `modules/shared/`        |       112 | Paths, Chrome launch, small helpers                              |
 | `public/` (static shell) |       187 | HTML/CSS shell served to the browser (excludes generated app.js) |
-| **Total**                | **1,709** |                                                                  |
+| **Total**                | **1,717** |                                                                  |
 
-Counts include tests, comments, and blank lines. Regenerate them with
-`node scripts/module-line-counts.ts`.
+Counts include tests, comments, and blank lines. Regenerate them only when
+requested by the user, with `node scripts/module-line-counts.ts`.
 
 The [diagram gallery](diagrams/README.md) holds editable XML, reference artwork,
 and rendered SVGs. `scripts/` contains code-size reporting.

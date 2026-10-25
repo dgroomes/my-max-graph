@@ -72,6 +72,7 @@ function App() {
   const mountedRef = useRef(true);
   const xmlRef = useRef('');
   const applyingXmlRef = useRef(false);
+  const hasFittedInitialDiagramRef = useRef(false);
   const nextInsertPointRef = useRef({ x: 80, y: 80 });
 
   const socketUrl = useMemo(
@@ -96,6 +97,10 @@ function App() {
     container.tabIndex = 0;
     InternalEvent.disableContextMenu(container);
     const graph = new Graph(container);
+    graph.options.foldingEnabled = false;
+    // XML imports replace the root; keep the viewport through live sync.
+    graph.resetViewOnRootChange = false;
+    hasFittedInitialDiagramRef.current = false;
     graph.setConnectable(!renderOnly);
     graph.setCellsEditable(!renderOnly);
     graph.setCellsMovable(!renderOnly);
@@ -336,6 +341,9 @@ function App() {
       if (renderOnly) {
         prepareForExport();
         markRenderedFlag();
+      } else if (!hasFittedInitialDiagramRef.current) {
+        prepareForExport({ maxScale: 1 });
+        hasFittedInitialDiagramRef.current = true;
       }
     } catch (error) {
       noteSync(`render error: ${String(error)}`);

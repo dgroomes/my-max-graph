@@ -31,6 +31,8 @@ AI-output warnings to individual files.
 - Put suggestions for the voice-protected root README in `.my/README.md`, under
   `README suggestions`, instead of editing the root README or creating a separate advice file.
 - Leave two blank lines before each Markdown section heading.
+- Run the Code Mix script and update its table only when explicitly requested
+  by the user, not as part of routine code changes.
 - Whenever updating the Code Mix table, manually pad its Markdown cells so
   the columns and pipe separators align in the source. Right-align line counts.
 - Write instructions as numbered steps (`1.`, `2.`, etc.). Use hyphens for
