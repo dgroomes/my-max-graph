@@ -1,7 +1,5 @@
 # maxGraph authoring reference
 
-> **WARNING: Unedited AI output.**
-
 A working reference for authoring `my-max-graph` diagram XML by hand or by agent.
 Everything in the "verified" sections was confirmed end-to-end through this
 repository's own render loop (`my-max-graph render`) against **maxGraph 0.24.0**,
@@ -9,12 +7,15 @@ the exact version pinned in `package.json`.
 
 This is a starting point, not a complete catalog.
 
+
 ## Sources of truth (for refreshing/extending this document)
 
-Instructions to agents: when asked to refresh or extend this reference, consult
-these sources, and verify any new claim by writing a scratch diagram under
-`.local/` (gitignored), rendering it, and looking at the PNG. Do not document a
-style key you have not seen render correctly.
+When asked to refresh or extend this reference:
+
+1. Consult the sources below
+2. Verify any new claim with the [verification loop](#the-verification-loop)
+   - Write a scratch diagram under `.local/` (gitignored), render it, and look
+     at the PNG. Do not document a style key you have not seen render correctly.
 
 | Source | Where | What it's good for |
 |---|---|---|
@@ -26,6 +27,7 @@ style key you have not seen render correctly.
 | XML codec | `packages/core/src/serialization/ModelXmlSerializer.ts` | How the XML maps to the model |
 | Official website | [maxgraph.github.io/maxGraph](https://maxgraph.github.io/maxGraph) | Docs, demos, feature list |
 | GitHub repository | [github.com/maxGraph/maxGraph](https://github.com/maxGraph/maxGraph) | Issues, changelog, upstream truth |
+
 
 ## The XML file format (verified)
 
@@ -73,9 +75,11 @@ Verified geometry techniques:
   against a tall invisible or `line` vertex are how the sequence diagram
   (`diagrams/one-round.xml`) pins messages at arbitrary heights.
 
+
 ## Verified style vocabulary
 
 All of these go as attributes on `<Object ... as="style" />`.
+
 
 ### Shapes
 
@@ -92,6 +96,7 @@ All of these go as attributes on `<Object ... as="style" />`.
 Registered but not yet used/verified here: `arrow`, `arrowConnector`, `image`,
 `label`.
 
+
 ### Edges
 
 - Routing: `edgeStyle="orthogonalEdgeStyle"` (right angles) and
@@ -107,11 +112,13 @@ Registered but not yet used/verified here: `arrow`, `arrowConnector`, `image`,
   between the arrowhead and the shape border.
 - `strokeWidth="2.5"` for emphasis lines.
 
+
 ### Dashes
 
 - `dashed="1"` for the default dash.
 - `dashPattern="1 3"` (dotted) or `"2 4"` (fine dash) for custom cadence —
   requires `dashed="1"` too.
+
 
 ### Text and labels
 
@@ -124,6 +131,7 @@ Registered but not yet used/verified here: `arrow`, `arrowConnector`, `image`,
 - `align="left"` with `spacingLeft="14"` makes terminal-prompt style cells.
 - Text-only cells: `fillColor="none" strokeColor="none"` with just a label.
 
+
 ### Color and opacity
 
 - `fillColor`, `strokeColor`, `fillColor="none"`, `strokeColor="none"`.
@@ -131,6 +139,7 @@ Registered but not yet used/verified here: `arrow`, `arrowConnector`, `image`,
 - This repo's actor palette (keep new concept diagrams consistent):
   you `#f8cecc`/`#b85450` · browser `#dae8fc`/`#6c8ebf` · diagram XML
   `#d5e8d4`/`#82b366` · agent `#e1d5e7`/`#9673a6` · render `#fff2cc`/`#d6b656`.
+
 
 ## Leads worth exploring (unverified)
 
@@ -141,14 +150,19 @@ From `CellStateStyle` in `types.ts`, promising but not yet probe-rendered:
 `image` shapes with `imageAlign`/`imageBorder`, `jettySize`, `segment`,
 `endSize`/`startSize` (arrowhead sizing), `endFill`/`startFill` (hollow arrowheads).
 
+
 ## The verification loop
 
-```shell
-# 1. write or edit a scratch file
-vi .local/probe/probe.xml
-# 2. render it (writes probe.png and probe.svg next to it)
-my-max-graph render .local/probe/probe.xml
-# 3. look at the PNG; if it isn't what you meant, edit and go to 2
-```
+1. Write or edit a scratch file
+   - ```shell
+     vi .local/probe/probe.xml
+     ```
+2. Render it
+   - ```shell
+     my-max-graph render .local/probe/probe.xml
+     ```
+   - Writes `probe.png` and `probe.svg` next to it.
+3. Look at the PNG
+   - If it isn't what you meant, edit the file and go to step 2.
 
 Worked examples live in `diagrams/*.xml` — each one is real, rendered source.

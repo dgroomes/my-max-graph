@@ -1,6 +1,4 @@
 /**
- * WARNING: Unedited AI output.
- *
  * Starter diagram for `my-max-graph new` — the dogfood flow diagram.
  * Kept inline so the CLI bundle does not depend on gitignored `.local/` assets.
  */

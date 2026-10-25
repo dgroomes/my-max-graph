@@ -1,5 +1,6 @@
 <GraphDataModel>
   <root>
+    <!-- Model root and default layer. -->
     <Cell id="0">
       <Object as="style" />
     </Cell>
@@ -7,66 +8,159 @@
       <Object as="style" />
     </Cell>
 
+    <!-- The person and agent collaborating on the file. -->
     <Cell id="you" value="You" vertex="1" parent="1">
-      <Geometry _x="70" _y="305" _width="140" _height="70" as="geometry" />
-      <Object shape="ellipse" fillColor="#f8cecc" strokeColor="#b85450" fontColor="#1f2937" fontSize="15" fontStyle="1" as="style" />
+      <Geometry _x="44.0" _y="108.0" _width="132" _height="64" as="geometry" />
+      <Object shape="ellipse" fillColor="#f1f5f9" strokeColor="none" fontColor="#1f2937" fontSize="28" fontStyle="1" as="style" strokeWidth="1.5" />
     </Cell>
     <Cell id="agent" value="Agent" vertex="1" parent="1">
-      <Geometry _x="980" _y="305" _width="160" _height="70" as="geometry" />
-      <Object rounded="1" fillColor="#e1d5e7" strokeColor="#9673a6" fontColor="#1f2937" fontSize="15" fontStyle="1" as="style" />
-    </Cell>
-    <Cell id="file" value="diagram.xml" vertex="1" parent="1">
-      <Geometry _x="500" _y="300" _width="200" _height="80" as="geometry" />
-      <Object rounded="1" fillColor="#d5e8d4" strokeColor="#82b366" strokeWidth="2" fontColor="#1f2937" fontSize="17" fontFamily="Courier New" fontStyle="1" as="style" />
-    </Cell>
-    <Cell id="browser" value="browser canvas" vertex="1" parent="1">
-      <Geometry _x="500" _y="85" _width="200" _height="70" as="geometry" />
-      <Object rounded="1" fillColor="#dae8fc" strokeColor="#6c8ebf" fontColor="#1f2937" fontSize="14" as="style" />
-    </Cell>
-    <Cell id="render" value="rendered PNG / SVG" vertex="1" parent="1">
-      <Geometry _x="500" _y="530" _width="200" _height="70" as="geometry" />
-      <Object rounded="1" fillColor="#fff2cc" strokeColor="#d6b656" fontColor="#1f2937" fontSize="14" as="style" />
+      <Geometry _x="44.0" _y="398.0" _width="132" _height="64" as="geometry" />
+      <Object shape="ellipse" fillColor="#f1f5f9" strokeColor="none" fontColor="#1f2937" fontSize="28" fontStyle="1" as="style" strokeWidth="1.5" />
     </Cell>
 
-    <Cell id="lookDrag" value="look · drag · connect" edge="1" parent="1" source="you" target="browser">
-      <Geometry relative="1" as="geometry">
-        <Point _x="0" _y="-12" as="offset" />
-      </Geometry>
-      <Object sourcePerimeterSpacing="4" targetPerimeterSpacing="4" edgeStyle="orthogonalEdgeStyle" rounded="1" exitX="0.75" exitY="0" entryX="0" entryY="0.5" startArrow="block" endArrow="block" strokeColor="#6c8ebf" fontColor="#3b5b82" fontSize="12" labelBackgroundColor="#ffffff" as="style" />
+    <!-- The shared artifact: an ordinary XML file. -->
+    <Cell id="file" value="diagram.xml" vertex="1" parent="1">
+      <Geometry _x="296.0" _y="247.0" _width="284" _height="76" as="geometry" />
+      <Object rounded="1" fillColor="#eff6ff" strokeColor="#5b7fa8" strokeWidth="2" fontColor="#1f2937" fontSize="29" fontFamily="Courier New" fontStyle="1" as="style" />
     </Cell>
-    <Cell id="liveSync" value="live sync" edge="1" parent="1" source="browser" target="file">
-      <Geometry relative="1" as="geometry">
-        <Point _x="16" _y="0" as="offset" />
-      </Geometry>
-      <Object sourcePerimeterSpacing="4" targetPerimeterSpacing="4" exitX="0.5" exitY="1" entryX="0.5" entryY="0" startArrow="block" endArrow="block" strokeColor="#6c8ebf" fontColor="#3b5b82" fontSize="12" labelBackgroundColor="#ffffff" as="style" />
+
+    <!-- Browser canvas and its window icon. Icon coordinates are local to browser. -->
+    <Cell id="browser" value="browser canvas" vertex="1" parent="1">
+      <Geometry _x="296.0" _y="101.0" _width="284" _height="78" as="geometry" />
+      <Object rounded="1" fillColor="#f1f5f9" strokeColor="none" fontColor="#1f2937" fontSize="24" as="style" strokeWidth="1.5" spacingLeft="55" />
     </Cell>
-    <Cell id="editXml" value="edit the XML" edge="1" parent="1" source="agent" target="file">
-      <Geometry relative="1" as="geometry">
-        <Point _x="0" _y="-12" as="offset" />
-      </Geometry>
-      <Object sourcePerimeterSpacing="4" targetPerimeterSpacing="4" exitX="0" exitY="0.5" entryX="1" entryY="0.5" endArrow="block" strokeColor="#9673a6" fontColor="#5b3b82" fontSize="12" labelBackgroundColor="#ffffff" as="style" />
+    <Cell id="web-frame" parent="browser" vertex="1" value="">
+      <Geometry _x="14" _y="21" _width="43" _height="35" as="geometry" />
+      <Object fillColor="#ffffff" strokeColor="#64748b" strokeWidth="1.2" fontColor="#25344a" fontSize="19" fontFamily="Arial" rounded="1" arcSize="10" as="style" />
     </Cell>
-    <Cell id="renderCmd" value="$ my-max-graph render" edge="1" parent="1" source="file" target="render">
-      <Geometry relative="1" as="geometry">
-        <Point _x="16" _y="0" as="offset" />
-      </Geometry>
-      <Object sourcePerimeterSpacing="4" targetPerimeterSpacing="4" exitX="0.5" exitY="1" entryX="0.5" entryY="0" dashed="1" endArrow="block" strokeColor="#d6b656" fontColor="#6b5b1e" fontSize="12" fontFamily="Courier New" labelBackgroundColor="#ffffff" as="style" />
+    <Cell id="web-bar" parent="browser" vertex="1" value="">
+      <Geometry _x="15" _y="29" _width="41" _height="1" as="geometry" />
+      <Object fillColor="#64748b" strokeColor="none" strokeWidth="1.2" fontColor="#25344a" fontSize="19" fontFamily="Arial" as="style" />
     </Cell>
-    <Cell id="inspect" value="inspect (vision)" edge="1" parent="1" source="render" target="agent">
-      <Geometry relative="1" as="geometry">
-        <Point _x="0" _y="-12" as="offset" />
-      </Geometry>
-      <Object sourcePerimeterSpacing="4" targetPerimeterSpacing="4" edgeStyle="orthogonalEdgeStyle" rounded="1" exitX="1" exitY="0.5" entryX="0.5" entryY="1" endArrow="block" strokeColor="#9673a6" fontColor="#5b3b82" fontSize="12" labelBackgroundColor="#ffffff" as="style" />
+    <Cell id="web-dot-0" parent="browser" vertex="1" value="">
+      <Geometry _x="18" _y="24" _width="2" _height="2" as="geometry" />
+      <Object fillColor="#64748b" strokeColor="none" strokeWidth="1.2" fontColor="#25344a" fontSize="19" fontFamily="Arial" shape="ellipse" as="style" />
     </Cell>
-    <Cell id="converse" value="&quot;tighten this up&quot;" edge="1" parent="1" source="you" target="agent">
+    <Cell id="web-dot-1" parent="browser" vertex="1" value="">
+      <Geometry _x="23" _y="24" _width="2" _height="2" as="geometry" />
+      <Object fillColor="#64748b" strokeColor="none" strokeWidth="1.2" fontColor="#25344a" fontSize="19" fontFamily="Arial" shape="ellipse" as="style" />
+    </Cell>
+    <Cell id="web-dot-2" parent="browser" vertex="1" value="">
+      <Geometry _x="28" _y="24" _width="2" _height="2" as="geometry" />
+      <Object fillColor="#64748b" strokeColor="none" strokeWidth="1.2" fontColor="#25344a" fontSize="19" fontFamily="Arial" shape="ellipse" as="style" />
+    </Cell>
+    <Cell id="web-side" parent="browser" vertex="1" value="">
+      <Geometry _x="19" _y="34" _width="8" _height="16" as="geometry" />
+      <Object fillColor="#dce6f2" strokeColor="none" strokeWidth="1.2" fontColor="#25344a" fontSize="19" fontFamily="Arial" as="style" />
+    </Cell>
+    <Cell id="web-text-0" parent="browser" vertex="1" value="">
+      <Geometry _x="31" _y="35" _width="20" _height="2" as="geometry" />
+      <Object fillColor="#94a3b8" strokeColor="none" strokeWidth="1.2" fontColor="#25344a" fontSize="19" fontFamily="Arial" as="style" />
+    </Cell>
+    <Cell id="web-text-1" parent="browser" vertex="1" value="">
+      <Geometry _x="31" _y="41" _width="15" _height="2" as="geometry" />
+      <Object fillColor="#94a3b8" strokeColor="none" strokeWidth="1.2" fontColor="#25344a" fontSize="19" fontFamily="Arial" as="style" />
+    </Cell>
+    <Cell id="web-text-2" parent="browser" vertex="1" value="">
+      <Geometry _x="31" _y="47" _width="18" _height="2" as="geometry" />
+      <Object fillColor="#94a3b8" strokeColor="none" strokeWidth="1.2" fontColor="#25344a" fontSize="19" fontFamily="Arial" as="style" />
+    </Cell>
+
+    <!-- Rendered output and its photo icon. Icon coordinates are local to render. -->
+    <Cell id="render" value="PNG / SVG" vertex="1" parent="1">
+      <Geometry _x="296.0" _y="391.0" _width="284" _height="78" as="geometry" />
+      <Object rounded="1" fillColor="#f1f5f9" strokeColor="none" fontColor="#1f2937" fontSize="24" as="style" strokeWidth="1.5" spacingLeft="55" />
+    </Cell>
+    <Cell id="photo-paper" parent="render" vertex="1" value="">
+      <Geometry _x="15" _y="17" _width="42" _height="45" as="geometry" />
+      <Object fillColor="#ffffff" strokeColor="#64748b" strokeWidth="1.2" fontColor="#25344a" fontSize="19" fontFamily="Arial" as="style" />
+    </Cell>
+    <Cell id="photo-sky" parent="render" vertex="1" value="">
+      <Geometry _x="19" _y="21" _width="34" _height="28" as="geometry" />
+      <Object fillColor="#e5edf7" strokeColor="none" strokeWidth="1.2" fontColor="#25344a" fontSize="19" fontFamily="Arial" as="style" />
+    </Cell>
+    <Cell id="photo-sun" parent="render" vertex="1" value="">
+      <Geometry _x="40" _y="25" _width="6" _height="6" as="geometry" />
+      <Object fillColor="#8aa2bd" strokeColor="none" strokeWidth="1.2" fontColor="#25344a" fontSize="19" fontFamily="Arial" shape="ellipse" as="style" />
+    </Cell>
+    <Cell id="photo-peak1" parent="render" vertex="1" value="">
+      <Geometry _x="19" _y="32" _width="21" _height="17" as="geometry" />
+      <Object fillColor="#8aa2bd" strokeColor="none" strokeWidth="1.2" fontColor="#25344a" fontSize="19" fontFamily="Arial" shape="triangle" direction="north" as="style" />
+    </Cell>
+    <Cell id="photo-peak2" parent="render" vertex="1" value="">
+      <Geometry _x="33" _y="37" _width="20" _height="12" as="geometry" />
+      <Object fillColor="#b0c1d3" strokeColor="none" strokeWidth="1.2" fontColor="#25344a" fontSize="19" fontFamily="Arial" shape="triangle" direction="north" as="style" />
+    </Cell>
+
+    <!-- User speech, moved as one group. Draw the tail first so the bubble covers its base. -->
+    <Cell id="speech-group" vertex="1" connectable="0" parent="1">
+      <Geometry _x="-25" _y="0" _width="260" _height="101" as="geometry" />
+      <Object fillColor="none" strokeColor="none" as="style" />
+    </Cell>
+    <Cell id="speech-tail" value="" vertex="1" parent="speech-group">
+      <Geometry _x="121" _y="57.0" _width="40" _height="44" as="geometry" />
+      <Object fillColor="#f1f5f9" strokeColor="none" fontColor="#1f2937" fontFamily="Arial" fontSize="17" rounded="0" arcSize="18" whiteSpace="wrap" shape="triangle" direction="south" as="style" rotation="28" />
+    </Cell>
+    <Cell id="speech" value="“vertically align&#10;rightside arrows”" vertex="1" parent="speech-group">
+      <Geometry _x="0" _y="0.0" _width="260" _height="78" as="geometry" />
+      <Object fillColor="#f1f5f9" strokeColor="none" fontColor="#1f2937" fontFamily="Arial" fontSize="20" rounded="1" arcSize="22" whiteSpace="wrap" fontStyle="2" as="style" />
+    </Cell>
+
+    <!-- Connections between the actors and artifacts; converse carries the spoken request. -->
+    <Cell id="lookDrag" value="" edge="1" parent="1" source="you" target="browser">
+      <Geometry relative="1" as="geometry" />
+      <Object sourcePerimeterSpacing="4" targetPerimeterSpacing="4" rounded="1" exitX="1" exitY="0.5" entryX="0" entryY="0.5" startArrow="block" endArrow="block" strokeColor="#64748b" fontColor="#475569" fontSize="16" labelBackgroundColor="#ffffff" as="style" strokeWidth="1.5" />
+    </Cell>
+    <Cell id="liveSync" value="" edge="1" parent="1" source="browser" target="file">
+      <Geometry relative="1" as="geometry" />
+      <Object sourcePerimeterSpacing="4" targetPerimeterSpacing="4" exitX="0.5" exitY="1" entryX="0.5" entryY="0" startArrow="block" endArrow="block" strokeColor="#64748b" fontColor="#475569" fontSize="16" labelBackgroundColor="#ffffff" as="style" strokeWidth="1.5" />
+    </Cell>
+    <Cell id="editXml" value="" edge="1" parent="1" source="agent" target="file">
       <Geometry relative="1" as="geometry">
         <Array as="points">
-          <Point _x="105" _y="40" />
-          <Point _x="1100" _y="40" />
+          <Point _x="110" _y="285" />
         </Array>
-        <Point _x="0" _y="-12" as="offset" />
       </Geometry>
-      <Object rounded="1" exitX="0.25" exitY="0" entryX="0.75" entryY="0" dashed="1" endArrow="block" strokeColor="#b85450" fontColor="#7f1d1d" fontSize="12" fontStyle="2" labelBackgroundColor="#ffffff" as="style" />
+      <Object sourcePerimeterSpacing="4" targetPerimeterSpacing="4" exitX="0.5" exitY="0" entryX="0" entryY="0.5" endArrow="block" strokeColor="#64748b" fontColor="#475569" fontSize="16" labelBackgroundColor="#ffffff" as="style" strokeWidth="1.5" />
+    </Cell>
+    <Cell id="renderCmd" value="" edge="1" parent="1" source="file" target="render">
+      <Geometry relative="1" as="geometry" />
+      <Object sourcePerimeterSpacing="4" targetPerimeterSpacing="4" exitX="0.5" exitY="1" entryX="0.5" entryY="0" dashed="1" endArrow="block" strokeColor="#64748b" fontColor="#475569" fontSize="16" fontFamily="Courier New" labelBackgroundColor="#ffffff" as="style" strokeWidth="1.5" />
+    </Cell>
+    <Cell id="inspect" value="" edge="1" parent="1" source="render" target="agent">
+      <Geometry relative="1" as="geometry" />
+      <Object sourcePerimeterSpacing="4" targetPerimeterSpacing="4" rounded="1" exitX="0" exitY="0.5" entryX="1" entryY="0.5" endArrow="block" strokeColor="#64748b" fontColor="#475569" fontSize="16" labelBackgroundColor="#ffffff" as="style" strokeWidth="1.5" />
+    </Cell>
+    <Cell id="converse" edge="1" parent="1" source="speech" target="agent" value="">
+      <Geometry relative="1" as="geometry">
+        <Array as="points">
+          <Point _x="-150" _y="95" />
+          <Point _x="-140" _y="365" />
+        </Array>
+      </Geometry>
+      <Object strokeColor="#8c9db3" strokeWidth="1.5" endArrow="block" rounded="0" sourcePerimeterSpacing="4" targetPerimeterSpacing="4" exitX="0" exitY="0.5" entryX="0" entryY="0.5" as="style" curved="1" />
+    </Cell>
+
+    <!-- Connection labels, drawn last so their backgrounds keep the lines out of the text. -->
+    <Cell id="look-label" parent="1" vertex="1" value="look · drag&#10;connect">
+      <Geometry _x="181" _y="83" _width="113" _height="48" as="geometry" />
+      <Object fillColor="#ffffff" strokeColor="none" strokeWidth="1.2" fontColor="#25344a" fontSize="19" fontFamily="Arial" as="style" />
+    </Cell>
+    <Cell id="sync-label" parent="1" vertex="1" value="live sync">
+      <Geometry _x="449" _y="199" _width="117" _height="30" as="geometry" />
+      <Object fillColor="#ffffff" strokeColor="none" strokeWidth="1.2" fontColor="#25344a" fontSize="19" fontFamily="Arial" as="style" />
+    </Cell>
+    <Cell id="render-label" parent="1" vertex="1" value="$ my-max-graph render">
+      <Geometry _x="304" _y="344" _width="270" _height="31" as="geometry" />
+      <Object fillColor="#ffffff" strokeColor="none" strokeWidth="1.2" fontColor="#25344a" fontSize="20" fontFamily="Courier New" as="style" />
+    </Cell>
+    <Cell id="inspect-label" parent="1" vertex="1" value="inspect">
+      <Geometry _x="182" _y="390" _width="112" _height="30" as="geometry" />
+      <Object fillColor="#ffffff" strokeColor="none" strokeWidth="1.2" fontColor="#25344a" fontSize="19" fontFamily="Arial" as="style" />
+    </Cell>
+    <Cell id="edit-label" parent="1" vertex="1" value="edit the XML">
+      <Geometry _x="142" _y="245" _width="143" _height="30" as="geometry" />
+      <Object fillColor="#ffffff" strokeColor="none" strokeWidth="1.2" fontColor="#25344a" fontSize="19" fontFamily="Arial" as="style" />
     </Cell>
   </root>
 </GraphDataModel>

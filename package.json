@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "My tooling over maxGraph for diagramming software systems",
+  "description": "My tooling over maxGraph for working on diagrams with an agent",
   "bin": {
     "my-max-graph": "dist/my-max-graph.js"
   },
@@ -12,21 +12,21 @@
     "public"
   ],
   "engines": {
-    "node": ">=22"
+    "node": ">=24"
   },
   "dependencies": {
-    "puppeteer-core": "25.4.0",
-    "ws": "8.21.1"
+    "puppeteer-core": "25.16.0",
+    "ws": "8.22.0"
   },
   "devDependencies": {
-    "@maxgraph/core": "0.24.0",
-    "@types/node": "26.1.2",
-    "@types/react": "19.2.18",
-    "@types/react-dom": "19.2.4",
-    "@types/ws": "8.18.1",
-    "esbuild": "0.28.1",
-    "react": "19.2.8",
-    "react-dom": "19.2.8",
+    "@maxgraph/core": "0.25.1",
+    "@types/node": "26.6.5",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@types/ws": "8.18.2",
+    "esbuild": "0.28.2",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
     "typescript": "7.0.2"
   }
 }

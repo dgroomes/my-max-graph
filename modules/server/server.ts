@@ -1,6 +1,3 @@
-/**
- * WARNING: Unedited AI output.
- */
 import { createHash } from 'node:crypto';
 import { createServer, type IncomingMessage, type ServerResponse } from 'node:http';
 import { existsSync, mkdirSync, readFileSync, renameSync, watch, writeFileSync } from 'node:fs';

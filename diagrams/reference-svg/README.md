@@ -1,5 +1,3 @@
-WARNING: Unedited AI output.
-
 # Hand-authored SVG references
 
 These five SVGs preserve the original visual explorations. They are design targets,

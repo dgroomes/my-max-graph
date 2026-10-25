@@ -1,10 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * WARNING: Unedited AI output.
- *
- * Print module line counts. Output only — the README "Code Mix" table is
- * hand-edited (by a person or an agent) from these numbers.
+ * Print module line counts for development notes. Does not modify files.
  *
  * Usage (Node type stripping; no transpile step):
  *   node scripts/module-line-counts.ts

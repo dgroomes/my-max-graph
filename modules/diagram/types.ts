@@ -1,6 +1,4 @@
 /**
- * WARNING: Unedited AI output.
- *
  * Shared diagram report types used by the browser viewer and headless render.
  */
 export type DiagramNodeReport = {

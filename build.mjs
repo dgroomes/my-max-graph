@@ -1,20 +1,20 @@
 #!/usr/bin/env node
 
 /**
- * WARNING: Unedited AI output.
- *
  * Build browser + Node CLI bundles with esbuild.
  *
  *   node build.mjs
  */
 import * as esbuild from 'esbuild';
-import { chmod, mkdir } from 'node:fs/promises';
+import { chmod, mkdir, readFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = dirname(fileURLToPath(import.meta.url));
 const distCli = join(root, 'dist', 'my-max-graph.js');
 const browserOut = join(root, 'public', 'app.js');
+const { version } = JSON.parse(await readFile(join(root, 'package.json'), 'utf8'));
+const buildTimestamp = new Date().toISOString();
 
 await mkdir(join(root, 'dist'), { recursive: true });
 
@@ -37,6 +37,10 @@ await esbuild.build({
   format: 'esm',
   platform: 'node',
   packages: 'external',
+  define: {
+    __APP_VERSION__: JSON.stringify(version),
+    __BUILD_TIMESTAMP__: JSON.stringify(buildTimestamp),
+  },
   banner: { js: '#!/usr/bin/env node' },
   logLevel: 'info',
 });

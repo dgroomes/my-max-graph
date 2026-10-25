@@ -1,5 +1,3 @@
-WARNING: Unedited AI output.
-
 # Generated diagram renders
 
 Every SVG in this directory is generated from the same-named maxGraph XML file

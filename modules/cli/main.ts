@@ -1,6 +1,4 @@
 /**
- * WARNING: Unedited AI output.
- *
  * CLI entrypoint (bundled to dist/my-max-graph.js). Owns process bootstrap,
  * argument parsing, help text, and command dispatch.
  */
@@ -11,6 +9,9 @@ import { renderDiagramArtifacts } from '../render/render';
 import { startServer } from '../server/server';
 import { writeTextFile } from '../shared/fs';
 import { starterDiagramXml } from './starter-template';
+
+declare const __APP_VERSION__: string;
+declare const __BUILD_TIMESTAMP__: string;
 
 type Args = {
   positional: string[];
@@ -31,6 +32,11 @@ async function runCli(argv: string[]) {
 
 async function dispatch(parsed: Args) {
   const head = parsed.positional[0];
+
+  if (head === 'version' || head === '-v' || parsed.flags.has('version')) {
+    console.log(`my-max-graph ${__APP_VERSION__}\nBuilt: ${formatLocalTimestamp(__BUILD_TIMESTAMP__)}`);
+    return;
+  }
 
   if (!head || head === 'help' || head === '--help' || head === '-h') {
     printHelp();
@@ -153,6 +159,16 @@ function stripXmlExtension(diagramPath: string) {
   return ext ? diagramPath.slice(0, -ext.length) : diagramPath;
 }
 
+function formatLocalTimestamp(timestamp: string): string {
+  const date = new Date(timestamp);
+  const offset = -date.getTimezoneOffset();
+  const local = new Date(date.getTime() + offset * 60_000).toISOString().slice(0, -1);
+  const sign = offset < 0 ? '-' : '+';
+  const hours = String(Math.floor(Math.abs(offset) / 60)).padStart(2, '0');
+  const minutes = String(Math.abs(offset) % 60).padStart(2, '0');
+  return `${local}${sign}${hours}:${minutes}`;
+}
+
 function printHelp() {
   console.log(`my-max-graph — my tooling over maxGraph for diagramming software systems
 
@@ -160,6 +176,7 @@ Usage:
   my-max-graph <diagram.xml> [--port 3000]
   my-max-graph new <diagram.xml>
   my-max-graph render <diagram.xml> [--out diagram.png] [--svg diagram.svg]
+  my-max-graph version                 (also --version or -v)
   my-max-graph help
 
 Canonical loop:

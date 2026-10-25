@@ -1,6 +1,3 @@
-/**
- * WARNING: Unedited AI output.
- */
 import puppeteer, { type Browser, type LaunchOptions } from 'puppeteer-core';
 
 export type ChromeLaunchOptions = {

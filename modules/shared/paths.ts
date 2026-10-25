@@ -1,6 +1,3 @@
-/**
- * WARNING: Unedited AI output.
- */
 import { existsSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
