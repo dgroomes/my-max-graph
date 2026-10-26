@@ -6,178 +6,170 @@
     <title>my-max-graph</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <style>
-      body {
-        margin: 0;
-        font-family: system-ui, -apple-system, Segoe UI, sans-serif;
-        background: #0f1115;
-        color: #f0f3f8;
-      }
-
-      body.render-only {
+      :root {
+        color-scheme: light;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: #26352f;
         background: #ffffff;
-        color: #111827;
+        font-synthesis: none;
       }
 
-      header {
-        padding: 12px 16px;
-        border-bottom: 1px solid #242a33;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
+      * { box-sizing: border-box; }
+      body { margin: 0; }
+      button, input { font: inherit; }
+      main { display: flex; height: 100dvh; }
 
-      main {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-        padding: 12px;
-        height: calc(100vh - 57px);
-        box-sizing: border-box;
-      }
-
-      .panel {
-        background: #161b22;
-        border: 1px solid #242a33;
-        border-radius: 8px;
+      .sidebar {
+        width: 248px;
+        flex-shrink: 0;
         display: flex;
         flex-direction: column;
-        overflow: hidden;
-        min-height: 0;
+        gap: 28px;
+        padding: 28px 20px 20px;
+        overflow-y: auto;
+        background: #f6f8f5;
+        border-right: 1px solid #dfe6df;
       }
 
-      .panel h2 {
-        margin: 0;
-        padding: 10px 12px;
-        font-size: 14px;
-        border-bottom: 1px solid #242a33;
-      }
-
-      .panel-note {
-        margin: 0;
-        padding: 8px 12px;
-        font-size: 12px;
-        line-height: 1.4;
-        color: #8b949e;
-        border-bottom: 1px solid #242a33;
-      }
-
-      textarea {
-        flex: 1;
-        border: 0;
-        outline: none;
-        resize: none;
-        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-        font-size: 13px;
-        line-height: 1.45;
-        color: #f0f3f8;
-        background: #0f1115;
-        padding: 12px;
-      }
-
-      #graph {
-        flex: 1;
-        background: #ffffff;
-        margin: 0 12px 12px;
-        border-radius: 6px;
-        overflow: hidden;
-        min-height: 320px;
-      }
-
-      #graph:focus {
-        outline: 2px solid #388bfd;
-        outline-offset: -2px;
-      }
-
-      .graph-toolbar {
+      h1 {
         display: flex;
-        flex-wrap: wrap;
         align-items: center;
-        gap: 8px;
-        padding: 10px 12px;
-        border-bottom: 1px solid #242a33;
+        gap: 10px;
+        margin: 0 0 12px;
+        font-size: 18px;
+        font-weight: 650;
+        letter-spacing: -0.6px;
       }
 
-      .graph-toolbar input {
-        min-width: 170px;
-        height: 30px;
-        border: 1px solid #2f3742;
-        border-radius: 6px;
-        padding: 0 8px;
-        color: #f0f3f8;
-        background: #0f1115;
+      .brand-mark {
+        display: grid;
+        place-items: center;
+        width: 28px;
+        height: 28px;
+        border: 1px solid #c9dacf;
+        border-radius: 8px;
+        color: #287852;
+        background: #e7efe7;
+        font-size: 23px;
       }
 
-      .graph-toolbar button {
-        height: 30px;
-        padding: 0 10px;
-        border: 1px solid #2f3742;
-        border-radius: 6px;
-        color: #f0f3f8;
-        background: #1f2631;
+      .control-group { display: flex; flex-direction: column; gap: 10px; }
+      .control-group label, .group-label {
+        color: #738078;
+        font-size: 11px;
+        font-weight: 650;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+      }
+
+      input {
+        min-width: 0;
+        width: 100%;
+        padding: 11px 12px;
+        border: 1px solid #dce3dc;
+        border-radius: 7px;
+        color: #26352f;
+        background: #fff;
+        font-size: 13px;
+      }
+
+      button {
+        min-height: 38px;
+        padding: 9px 10px;
+        border: 1px solid #dce3dc;
+        border-radius: 7px;
+        color: #354b3e;
+        background: #fff;
+        font-size: 12px;
+        font-weight: 550;
         cursor: pointer;
+        transition: background 120ms, border-color 120ms;
       }
 
-      .graph-toolbar button:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
+      button:hover:not(:disabled) { background: #edf4ed; border-color: #b4cbb9; }
+      button:disabled { color: #9da79f; background: #f1f4ef; cursor: default; }
+      button:focus-visible, input:focus-visible, textarea:focus-visible, .splitter:focus-visible {
+        outline: 2px solid #398760;
+        outline-offset: 2px;
       }
+      .delete-button:hover:not(:disabled) { color: #a23d32; background: #fff1ed; border-color: #e8bcb3; }
+      .button-row { display: flex; gap: 8px; }
+      .button-row button { flex: 1; }
+      .view-controls { border-top: 1px solid #dfe6df; padding-top: 20px; }
+      .source-toggle { display: flex; align-items: center; justify-content: space-between; }
+      .source-toggle[aria-expanded="true"] { background: #e8f1e9; border-color: #b7cfbe; }
+      .code-symbol { margin-right: 10px; color: #7b9183; font-family: monospace; }
 
-      .selection-summary {
-        margin-left: auto;
-        font-size: 12px;
-        color: #8b949e;
+      .sidebar-footer {
+        margin-top: auto;
+        padding-top: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
       }
+      .connection { display: flex; align-items: center; gap: 9px; font-size: 12px; font-weight: 550; }
+      .status-led {
+        flex-shrink: 0;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #e8b553;
+        box-shadow: 0 0 0 3px #e8b55318, 0 0 9px #e8b55388;
+      }
+      .connected .status-led {
+        background: #42b979;
+        box-shadow: inset 0 1px 2px #b4ffce, 0 0 0 3px #42b97918, 0 0 10px #42b97988;
+      }
+      .disconnected .status-led {
+        background: #dd705e;
+        box-shadow: inset 0 1px 2px #ffd0c6, 0 0 0 3px #dd705e18, 0 0 10px #dd705e88;
+      }
+      .last-edit { display: flex; flex-direction: column; gap: 7px; font-size: 11px; color: #7a857d; line-height: 1.6; }
+      .activity { font-size: 11px; color: #7a857d; }
+      .activity.warn { color: #b14d3a; }
 
-      .sync-line {
+      .workspace { display: flex; flex: 1; flex-direction: column; min-width: 0; overflow: hidden; }
+      #graph { position: relative; flex: 1; min-height: 0; overflow: hidden; background: #fff; }
+      #graph:focus { outline: none; }
+      #graph:focus-visible { outline: 2px solid #398760; outline-offset: -2px; }
+      .splitter {
+        display: grid;
+        place-items: center;
+        flex: 0 0 9px;
+        border-top: 1px solid #dfe6df;
+        background: #f6f8f5;
+        cursor: row-resize;
+        touch-action: none;
+      }
+      .splitter::after { content: ""; width: 32px; height: 2px; border-radius: 2px; background: #c3cfc5; }
+      .splitter:hover::after, .splitter:focus::after { background: #398760; }
+      #xml-source {
+        flex-grow: 0;
+        flex-shrink: 0;
+        min-height: 0;
+        width: 100%;
         margin: 0;
-        padding: 10px 12px;
-        font-size: 12px;
-        border-top: 1px solid #242a33;
-      }
-
-      .muted {
-        color: #8b949e;
-      }
-
-      .ok {
-        color: #3fb950;
-      }
-
-      .warn {
-        color: #d29922;
-      }
-
-      @media (max-width: 1000px) {
-        main {
-          grid-template-columns: 1fr;
-          height: auto;
-          min-height: calc(100vh - 57px);
-        }
-
-        .selection-summary {
-          width: 100%;
-          margin-left: 0;
-        }
-      }
-
-      body.render-only main {
-        display: block;
-        padding: 0;
-        height: 100vh;
-        min-height: 100vh;
-      }
-
-      body.render-only .panel {
-        background: #ffffff;
+        padding: 20px 24px;
         border: 0;
-        border-radius: 0;
+        resize: none;
+        color: #43564a;
+        background: #fafcf9;
+        font: 12px/1.7 ui-monospace, SFMono-Regular, Menlo, monospace;
+        tab-size: 2;
+      }
+      #xml-source:focus-visible { outline-offset: -2px; }
+
+      @media (max-width: 600px) {
+        .sidebar { width: 188px; padding: 20px 12px 16px; gap: 22px; }
+        h1 { gap: 6px; font-size: 15px; }
+        .brand-mark { width: 23px; height: 23px; font-size: 19px; }
+        .button-row { gap: 5px; }
+        button { padding: 9px 6px; font-size: 11px; }
+        .connection { font-size: 11px; }
       }
 
-      body.render-only #graph {
-        margin: 0;
-        border-radius: 0;
-        min-height: 100vh;
-      }
+      body.render-only main { height: 100vh; }
+      body.render-only #graph { min-height: 100vh; }
     </style>
   </head>
   <body>

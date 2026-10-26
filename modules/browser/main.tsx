@@ -54,14 +54,19 @@ function serializeCellStyle(style: unknown) {
 
 function App() {
   const [xml, setXml] = useState('');
-  const [status, setStatus] = useState('Connecting...');
+  const [status, setStatus] = useState('Ready');
+  const [connection, setConnection] = useState<'connecting' | 'connected' | 'disconnected'>('connecting');
+  const [showXml, setShowXml] = useState(false);
+  const [xmlHeight, setXmlHeight] = useState(35);
   const [statusClass, setStatusClass] = useState('muted');
-  const [lastSync, setLastSync] = useState('No sync yet.');
+  const [lastSync, setLastSync] = useState('No edits yet');
   const [nextLabel, setNextLabel] = useState('New Node');
   const [selectionCount, setSelectionCount] = useState(0);
   const [canUndo, setCanUndo] = useState(false);
   const [canRedo, setCanRedo] = useState(false);
 
+  const workspaceRef = useRef<HTMLElement | null>(null);
+  const fittingViewRef = useRef(false);
   const graphContainerRef = useRef<HTMLDivElement | null>(null);
   const graphRef = useRef<Graph | null>(null);
   const keyHandlerRef = useRef<KeyHandler | null>(null);
@@ -113,6 +118,9 @@ function App() {
 
     const undoManager = new UndoManager(100);
     const undoListener = (_sender: unknown, evt: { getProperty: (key: string) => unknown }) => {
+      if (applyingXmlRef.current || fittingViewRef.current) {
+        return;
+      }
       undoManager.undoableEditHappened(evt.getProperty('edit') as never);
       refreshUndoButtons();
     };
@@ -207,7 +215,15 @@ function App() {
     };
     window.__maxGraphEditor = api;
 
+    const resizeObserver = new ResizeObserver(() => {
+      if (!renderOnly && hasFittedInitialDiagramRef.current) {
+        prepareForExport({ maxScale: 1 });
+      }
+    });
+    resizeObserver.observe(container);
+
     return () => {
+      resizeObserver.disconnect();
       if (window.__maxGraphEditor === api) {
         delete window.__maxGraphEditor;
       }
@@ -254,7 +270,7 @@ function App() {
 
     socket.addEventListener('open', () => {
       if (mountedRef.current) {
-        setStatusWithClass('Live sync connected', 'ok');
+        setConnection('connected');
       }
     });
 
@@ -262,7 +278,7 @@ function App() {
       if (!mountedRef.current) {
         return;
       }
-      setStatusWithClass('Disconnected; retrying...', 'warn');
+      setConnection('disconnected');
       reconnectTimerRef.current = window.setTimeout(connect, 800);
     });
 
@@ -528,7 +544,7 @@ function App() {
   }
 
   function noteSync(source: string) {
-    setLastSync(`Last sync: ${new Date().toLocaleTimeString()} from ${source}`);
+    setLastSync(`${new Date().toLocaleTimeString()} · ${source}`);
   }
 
   function buildDiagramReport(): DiagramReport {
@@ -598,82 +614,128 @@ function App() {
 
     const padding = Math.max(0, Number(options?.padding ?? 24));
     const maxScale = Math.max(0.1, Number(options?.maxScale ?? 1.4));
-    graph.refresh();
-    graph.zoomActual();
+    fittingViewRef.current = true;
+    try {
+      graph.refresh();
+      graph.zoomActual();
 
-    const bounds = graph.getGraphBounds();
-    if (bounds.width > 0 && bounds.height > 0) {
-      const availableWidth = Math.max(200, container.clientWidth - padding * 2);
-      const availableHeight = Math.max(200, container.clientHeight - padding * 2);
-      const scale = Math.min(availableWidth / bounds.width, availableHeight / bounds.height, maxScale);
-      if (Number.isFinite(scale) && scale > 0) {
-        graph.zoomTo(scale, false);
+      const bounds = graph.getGraphBounds();
+      if (bounds.width > 0 && bounds.height > 0) {
+        const availableWidth = Math.max(200, container.clientWidth - padding * 2);
+        const availableHeight = Math.max(200, container.clientHeight - padding * 2);
+        const scale = Math.min(availableWidth / bounds.width, availableHeight / bounds.height, maxScale);
+        if (Number.isFinite(scale) && scale > 0) {
+          graph.zoomTo(scale, false);
+        }
+        graph.center(true, true);
       }
-      graph.center(true, true);
-    }
 
-    graph.refresh();
+      graph.refresh();
+    } finally {
+      fittingViewRef.current = false;
+    }
     return buildDiagramReport();
   }
 
   return (
-    <>
+    <main>
       {!renderOnly && (
-        <header>
-          <strong>my-max-graph</strong>
-          <span className={statusClass} title="Sync status">
-            {status}
-          </span>
-        </header>
-      )}
-      <main>
-        {!renderOnly && (
-          <section className="panel">
-            <h2>Diagram XML</h2>
-            <p className="panel-note">
-              Light GUI edits only (move/add/connect). Style and long-tail changes belong in this XML — ask an agent.
-            </p>
-            <textarea value={xml} spellCheck={false} onChange={(event) => onXmlChanged(event.target.value)} />
-          </section>
-        )}
-        <section className="panel">
-          {!renderOnly && <h2>Diagram</h2>}
-          {!renderOnly && (
-            <div className="graph-toolbar">
-              <input
-                value={nextLabel}
-                onChange={(event) => setNextLabel(event.target.value)}
-                aria-label="New node label"
-                placeholder="Node label"
-              />
-              <button type="button" onClick={() => insertShape('box')}>
-                Add Box
-              </button>
-              <button type="button" onClick={() => insertShape('ellipse')}>
-                Add Ellipse
-              </button>
-              <button type="button" onClick={() => connectSelection()} disabled={selectionCount < 2}>
-                Connect Selected
-              </button>
-              <button type="button" onClick={() => removeSelection()} disabled={selectionCount < 1}>
-                Delete Selected
-              </button>
-              <button type="button" onClick={() => undo()} disabled={!canUndo}>
-                Undo
-              </button>
-              <button type="button" onClick={() => redo()} disabled={!canRedo}>
-                Redo
-              </button>
-              <span className="selection-summary">
-                {selectionCount} selected. Drag to move. Delete/Backspace removes. Ctrl/Cmd+Z / Ctrl/Cmd+Y undo/redo.
-              </span>
+        <aside className="sidebar" aria-label="Diagram controls">
+          <h1><span className="brand-mark" aria-hidden="true">▦</span>my-max-graph</h1>
+          <div className="control-group">
+            <label htmlFor="node-label">Node label</label>
+            <input
+              id="node-label"
+              value={nextLabel}
+              onChange={(event) => setNextLabel(event.target.value)}
+              placeholder="New Node"
+            />
+            <div className="button-row">
+              <button type="button" onClick={() => insertShape('box')}>Add Box</button>
+              <button type="button" onClick={() => insertShape('ellipse')}>Add Ellipse</button>
             </div>
-          )}
-          <div ref={graphContainerRef} id="graph" />
-          {!renderOnly && <p className="sync-line muted">{lastSync}</p>}
-        </section>
-      </main>
-    </>
+          </div>
+          <div className="control-group">
+            <span className="group-label">Selection</span>
+            <button type="button" onClick={() => connectSelection()} disabled={selectionCount < 2}>
+              Connect Selected
+            </button>
+            <button className="delete-button" type="button" onClick={() => removeSelection()} disabled={selectionCount < 1}>
+              Delete Selected
+            </button>
+            <div className="button-row">
+              <button type="button" onClick={() => undo()} disabled={!canUndo}>Undo</button>
+              <button type="button" onClick={() => redo()} disabled={!canRedo}>Redo</button>
+            </div>
+          </div>
+          <div className="control-group view-controls">
+            <button
+              className="source-toggle"
+              type="button"
+              aria-expanded={showXml}
+              aria-controls="xml-source"
+              onClick={() => setShowXml(!showXml)}
+            >
+              <span><span className="code-symbol" aria-hidden="true">&lt;/&gt;</span>XML source</span>
+              <span aria-hidden="true">{showXml ? '−' : '+'}</span>
+            </button>
+          </div>
+          <footer className="sidebar-footer">
+            <div className={`connection ${connection}`} role="status">
+              <span className="status-led" aria-hidden="true" />
+              {connection === 'connected' ? 'Live sync connected' : connection === 'disconnected' ? 'Disconnected · retrying' : 'Connecting…'}
+            </div>
+            <div className="last-edit">
+              <span className="group-label">Last edit</span>
+              <span>{lastSync}</span>
+            </div>
+            <span className={`activity ${statusClass}`} role="status">{status}</span>
+          </footer>
+        </aside>
+      )}
+      <section className="workspace" ref={workspaceRef} aria-label="Diagram workspace">
+        <div ref={graphContainerRef} id="graph" />
+        {!renderOnly && showXml && (
+          <>
+            <div
+              className="splitter"
+              role="separator"
+              aria-label="Resize XML source"
+              aria-orientation="horizontal"
+              aria-controls="xml-source"
+              aria-valuemin={20}
+              aria-valuemax={65}
+              aria-valuenow={xmlHeight}
+              tabIndex={0}
+              onPointerDown={(event) => {
+                event.preventDefault();
+                event.currentTarget.setPointerCapture(event.pointerId);
+              }}
+              onPointerMove={(event) => {
+                if (!event.currentTarget.hasPointerCapture(event.pointerId)) return;
+                const bounds = workspaceRef.current!.getBoundingClientRect();
+                setXmlHeight(Math.min(65, Math.max(20, ((bounds.bottom - event.clientY) / bounds.height) * 100)));
+              }}
+              onPointerUp={(event) => event.currentTarget.releasePointerCapture(event.pointerId)}
+              onKeyDown={(event) => {
+                if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+                  event.preventDefault();
+                  setXmlHeight((height) => Math.min(65, Math.max(20, height + (event.key === 'ArrowUp' ? 5 : -5))));
+                }
+              }}
+            />
+            <textarea
+              id="xml-source"
+              aria-label="Diagram XML source"
+              value={xml}
+              spellCheck={false}
+              style={{ flexBasis: `${xmlHeight}%` }}
+              onChange={(event) => onXmlChanged(event.target.value)}
+            />
+          </>
+        )}
+      </section>
+    </main>
   );
 }
 
