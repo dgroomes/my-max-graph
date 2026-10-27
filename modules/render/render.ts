@@ -8,6 +8,7 @@ export type RenderOptions = {
   diagramPath: string;
   imagePath: string;
   svgPath: string;
+  renderer?: 'puppeteer' | 'resvg';
   width?: number;
   height?: number;
 };
@@ -25,6 +26,12 @@ export async function renderDiagramArtifacts(options: RenderOptions): Promise<vo
 
   await mkdir(dirname(imagePath), { recursive: true });
   await mkdir(dirname(svgPath), { recursive: true });
+
+  if (options.renderer === 'resvg') {
+    const { renderWithResvg } = await import('./resvg');
+    await renderWithResvg({ diagramPath, imagePath, svgPath, width, height });
+    return;
+  }
 
   // Always own an ephemeral server — never PUT onto a foreign listener.
   const ownedServer = await startServer({ diagramPath, port: 0, quiet: true });

@@ -30,6 +30,31 @@ Follow these instructions to build and install `my-max-graph`. Run commands from
    - The command is now available from any directory. See [README.md](README.md) for usage.
 
 
+## Instructions: Alternative renderer
+
+`--renderer resvg` uses maxGraph with jsdom to write SVG and the native
+[resvg CLI](https://github.com/linebender/resvg) to render PNG, instead of Chrome
+and Puppeteer. It does not start a browser or HTTP server. The default renderer
+is unchanged.
+
+1. Install resvg with the Rust toolchain, and ensure Cargo's bin directory is on `PATH`
+   - ```shell
+     cargo install resvg --locked
+     resvg --version
+     ```
+   - Verified with resvg 0.49.0. Install the fonts used by the diagram; Liberation or DejaVu fonts provide fallbacks on Linux.
+2. Render
+   - ```shell
+     my-max-graph render diagram.xml --renderer resvg
+     ```
+   - `--out` and `--svg` select output paths as usual. SVG uses the original coordinates on a transparent 1600 × 1000 canvas; PNG is 2× that size. There is no fitting or cropping, so off-canvas content is clipped.
+   - Labels use plain SVG text and explicit newlines. Text backgrounds/borders are omitted; HTML labels and images are unsupported. Use the default renderer when those features are needed.
+3. Run the renderer regression tests after building
+   - ```shell
+     node --test scripts/render-resvg.test.mjs
+     ```
+
+
 ## Code Mix
 
 The code is split into TypeScript modules under `modules/`.

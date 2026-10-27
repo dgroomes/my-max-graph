@@ -1,4 +1,4 @@
-import puppeteer, { type Browser, type LaunchOptions } from 'puppeteer-core';
+import type { Browser, LaunchOptions } from 'puppeteer-core';
 
 export type ChromeLaunchOptions = {
   width: number;
@@ -11,6 +11,7 @@ export type ChromeLaunchOptions = {
  * Resolution order: PUPPETEER_EXECUTABLE_PATH → channel 'chrome' → error with install hint.
  */
 export async function launchChrome(options: ChromeLaunchOptions): Promise<Browser> {
+  const { default: puppeteer } = await import('puppeteer-core');
   const base: LaunchOptions = {
     headless: true,
     defaultViewport: {

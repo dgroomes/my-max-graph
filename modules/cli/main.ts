@@ -90,7 +90,7 @@ async function cmdServe(diagramArg: string | undefined, parsed: Args) {
 async function cmdRender(diagramArg: string | undefined, parsed: Args) {
   if (!diagramArg) {
     throw new Error(
-      'Usage: my-max-graph render <diagram.xml> [--out diagram.png] [--svg diagram.svg]',
+      'Usage: my-max-graph render <diagram.xml> [--renderer puppeteer|resvg] [--out diagram.png] [--svg diagram.svg]',
     );
   }
 
@@ -99,6 +99,10 @@ async function cmdRender(diagramArg: string | undefined, parsed: Args) {
     throw new Error(`Diagram file does not exist: ${diagramPath}`);
   }
 
+  const renderer = getFlag(parsed, 'renderer', 'puppeteer');
+  if (renderer !== 'puppeteer' && renderer !== 'resvg') {
+    throw new Error(`Unknown renderer: ${renderer}. Choose puppeteer or resvg.`);
+  }
   const outRaw = getOptionalFlag(parsed, 'out');
   const imagePath = resolve(process.cwd(), outRaw || defaultImagePath(diagramPath));
   const svgFlag = parsed.flags.get('svg');
@@ -114,6 +118,7 @@ async function cmdRender(diagramArg: string | undefined, parsed: Args) {
     diagramPath,
     imagePath,
     svgPath,
+    renderer,
   });
 
   process.stdout.write(`${JSON.stringify({ diagramPath, imagePath, svgPath }, null, 2)}\n`);
@@ -175,9 +180,11 @@ function printHelp() {
 Usage:
   my-max-graph <diagram.xml> [--port 3000]
   my-max-graph new <diagram.xml>
-  my-max-graph render <diagram.xml> [--out diagram.png] [--svg diagram.svg]
+  my-max-graph render <diagram.xml> [--renderer puppeteer|resvg] [--out diagram.png] [--svg diagram.svg]
   my-max-graph version                 (also --version or -v)
   my-max-graph help
+
+Rendering defaults to Puppeteer. Use --renderer resvg for the resvg CLI alternative.
 
 Canonical loop:
   1. my-max-graph diagram.xml
