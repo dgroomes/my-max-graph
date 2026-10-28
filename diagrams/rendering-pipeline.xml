@@ -1,0 +1,66 @@
+<GraphDataModel>
+  <root>
+    <Cell id="0"><Object as="style" /></Cell>
+    <Cell id="1" parent="0"><Object as="style" /></Cell>
+
+    <!-- maxGraph turns model geometry and labels into an SVG drawing in either host. -->
+    <Cell id="diagram-xml" value="Diagram XML" vertex="1" parent="1">
+      <Geometry _x="40" _y="40" _width="220" _height="90" as="geometry" />
+      <Object fillColor="#eef7ed" strokeColor="#82a87a" strokeWidth="2" fontColor="#172033" fontFamily="Arial" fontSize="24" fontStyle="1" as="style" />
+    </Cell>
+    <Cell id="svg-machinery" value="⚙&#10;maxGraph" vertex="1" parent="1">
+      <Geometry _x="350" _y="40" _width="220" _height="90" as="geometry" />
+      <Object rounded="1" arcSize="12" fillColor="#fff7ed" strokeColor="#c17c34" strokeWidth="2" fontColor="#854d0e" fontFamily="Arial" fontSize="22" as="style" />
+    </Cell>
+    <Cell id="uncropped-svg" value="Uncropped&#10;SVG" vertex="1" parent="1">
+      <Geometry _x="660" _y="40" _width="220" _height="90" as="geometry" />
+      <Object fillColor="#f8fafc" strokeColor="#a7b2c2" strokeWidth="2" fontColor="#172033" fontFamily="Arial" fontSize="24" fontStyle="1" as="style" />
+    </Cell>
+
+    <!-- The app sizes the viewport around measured content; labels already exist. -->
+    <Cell id="crop-machinery" value="⚙&#10;Measure + crop" vertex="1" parent="1">
+      <Geometry _x="660" _y="175" _width="220" _height="90" as="geometry" />
+      <Object rounded="1" arcSize="12" fillColor="#fff7ed" strokeColor="#c17c34" strokeWidth="2" fontColor="#854d0e" fontFamily="Arial" fontSize="22" as="style" />
+    </Cell>
+    <Cell id="cropped-svg" value="Cropped SVG" vertex="1" parent="1">
+      <Geometry _x="660" _y="310" _width="220" _height="90" as="geometry" />
+      <Object fillColor="#fff2cc" strokeColor="#c7ab53" strokeWidth="2" fontColor="#172033" fontFamily="Arial" fontSize="24" fontStyle="1" as="style" />
+    </Cell>
+
+    <!-- Rendering turns the saved SVG into pixels, then PNG bytes, in the selected engine. -->
+    <Cell id="png-machinery" value="⚙&#10;Rasterize&#10;+ encode" vertex="1" parent="1">
+      <Geometry _x="350" _y="310" _width="220" _height="90" as="geometry" />
+      <Object rounded="1" arcSize="12" fillColor="#fff7ed" strokeColor="#c17c34" strokeWidth="2" fontColor="#854d0e" fontFamily="Arial" fontSize="22" as="style" />
+    </Cell>
+    <Cell id="png-file" value="PNG" vertex="1" parent="1">
+      <Geometry _x="40" _y="310" _width="220" _height="90" as="geometry" />
+      <Object fillColor="#fff2cc" strokeColor="#c7ab53" strokeWidth="2" fontColor="#172033" fontFamily="Arial" fontSize="24" fontStyle="1" as="style" />
+    </Cell>
+
+    <!-- Read clockwise across the top, down the right, then right-to-left along the bottom. -->
+    <Cell id="xml-to-machinery" edge="1" parent="1" source="diagram-xml" target="svg-machinery">
+      <Geometry relative="1" as="geometry" />
+      <Object exitX="1" exitY="0.5" entryX="0" entryY="0.5" endArrow="block" strokeColor="#526b8e" strokeWidth="2" as="style" />
+    </Cell>
+    <Cell id="machinery-to-svg" edge="1" parent="1" source="svg-machinery" target="uncropped-svg">
+      <Geometry relative="1" as="geometry" />
+      <Object exitX="1" exitY="0.5" entryX="0" entryY="0.5" endArrow="block" strokeColor="#526b8e" strokeWidth="2" as="style" />
+    </Cell>
+    <Cell id="svg-to-crop" edge="1" parent="1" source="uncropped-svg" target="crop-machinery">
+      <Geometry relative="1" as="geometry" />
+      <Object exitX="0.5" exitY="1" entryX="0.5" entryY="0" endArrow="block" strokeColor="#526b8e" strokeWidth="2" as="style" />
+    </Cell>
+    <Cell id="crop-to-svg" edge="1" parent="1" source="crop-machinery" target="cropped-svg">
+      <Geometry relative="1" as="geometry" />
+      <Object exitX="0.5" exitY="1" entryX="0.5" entryY="0" endArrow="block" strokeColor="#526b8e" strokeWidth="2" as="style" />
+    </Cell>
+    <Cell id="svg-to-png-machinery" edge="1" parent="1" source="cropped-svg" target="png-machinery">
+      <Geometry relative="1" as="geometry" />
+      <Object exitX="0" exitY="0.5" entryX="1" entryY="0.5" endArrow="block" strokeColor="#526b8e" strokeWidth="2" as="style" />
+    </Cell>
+    <Cell id="machinery-to-png" edge="1" parent="1" source="png-machinery" target="png-file">
+      <Geometry relative="1" as="geometry" />
+      <Object exitX="0" exitY="0.5" entryX="1" entryY="0.5" endArrow="block" strokeColor="#526b8e" strokeWidth="2" as="style" />
+    </Cell>
+  </root>
+</GraphDataModel>

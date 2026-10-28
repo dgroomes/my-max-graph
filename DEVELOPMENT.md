@@ -42,17 +42,19 @@ is unchanged.
      cargo install resvg --locked
      resvg --version
      ```
-   - Verified with resvg 0.49.0. Install the fonts used by the diagram; Liberation or DejaVu fonts provide fallbacks on Linux.
+   - Requires resvg 0.49+ for `--query-bbox`; verified with 0.49.0. Install the fonts used by the diagram; Liberation or DejaVu fonts provide fallbacks on Linux.
 2. Render
    - ```shell
      my-max-graph render diagram.xml --renderer resvg
      ```
-   - `--out` and `--svg` select output paths as usual. SVG uses the original coordinates on a transparent 1600 × 1000 canvas; PNG is 2× that size. There is no fitting or cropping, so off-canvas content is clipped.
+   - `--out` and `--svg` select output paths as usual. resvg measures the SVG (including text and strokes); the app crops its viewport to those bounds plus 24 units of padding. Drawing coordinates and scale stay unchanged. PNG is 2× the cropped SVG size, with transparency preserved.
    - Labels use plain SVG text and explicit newlines. Text backgrounds/borders are omitted; HTML labels and images are unsupported. Use the default renderer when those features are needed.
+   - See the [rendering pipeline](diagrams/rendering-pipeline.md) for the gear diagram and a comparison of cropping in resvg and Chromium.
 3. Run the renderer regression tests after building
    - ```shell
-     node --test scripts/render-resvg.test.mjs
+     node --test scripts/*.test.mjs
      ```
+   - Exercises both resvg and Chromium and checks cropped SVG bounds and PNG pixels. Both renderers must be installed.
 
 
 ## Code Mix

@@ -15,6 +15,7 @@
     "modules/diagram/**/*",
     "modules/server/**/*",
     "modules/render/**/*",
-    "modules/shared/**/*"
+    "modules/shared/**/*",
+    "scripts/png.ts"
   ]
 }

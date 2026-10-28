@@ -31,6 +31,12 @@ capability map, and a timeline — because the point of the tool is range, not a
 house style.
 
 
+## Rendering pipeline
+
+[One gear diagram and explanation](rendering-pipeline.md) follow XML through SVG,
+cropping, and PNG, including where Chromium and native resvg do the measuring.
+
+
 ## The original five, recreated
 
 Five deliberately different readings of the same workflow. Each keeps the

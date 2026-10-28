@@ -61,6 +61,8 @@ instructions specific to agents that have no better home.
 
 ### Diagram XML
 
+- Limit each box to six words; prefer one or two. Put explanatory details in
+  companion Markdown rather than on the drawing.
 - Start each logical block with a short XML comment explaining what the elements
   make together. Describe intent, such as a browser icon or a speech bubble;
   don't narrate every rectangle or repeat the attributes.
