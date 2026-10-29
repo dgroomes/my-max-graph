@@ -31,6 +31,7 @@ This is what it looks like to use my-max-graph via the `mmg` CLI in the view/edi
    - Click the printed link to view the diagram in the browser.
 4. Edit the diagram (you)
    - Drag boxes around, make new ones, edit text labels, etc. Any changes  you make are synced back to the XML file.
+   - <img alt="my-max-graph browser view" src="backstage/screenshot.png" width="600" />
 5. Edit the diagram (agent) 
    - Ask an agent to edit the diagram. So long as the agent is aware of `mmg` by way of an agent skill, then put it to use! Tell your agent, "mute the color pallete" and it will go ahead and make the many XML edits to get the job done. To verify it's work, the agent doesn't view the rendered diagram in the browser, but uses the `mmg render` command to render a `.png` of the diagram. An agent with vision support can verify things like line alignment, text clipping, colors, etc. Edits to the XML will also be synced and reflected in the diagram in the browser. This is the virtuous view/edit/review loop.
 6. Final render
