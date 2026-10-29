@@ -2,7 +2,7 @@
 
 A working reference for authoring `my-max-graph` diagram XML by hand or by agent.
 Everything in the "verified" sections was confirmed end-to-end through this
-repository's own render loop (`my-max-graph render`) against **maxGraph 0.24.0**,
+repository's own render loop (`mmg render`) against **maxGraph 0.24.0**,
 the exact version pinned in `package.json`.
 
 This is a starting point, not a complete catalog.
@@ -159,7 +159,7 @@ From `CellStateStyle` in `types.ts`, promising but not yet probe-rendered:
      ```
 2. Render it
    - ```shell
-     my-max-graph render .local/probe/probe.xml
+     mmg render .local/probe/probe.xml
      ```
    - Writes `probe.png` and `probe.svg` next to it.
 3. Look at the PNG

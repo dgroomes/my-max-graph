@@ -26,6 +26,10 @@ AI-output warnings to individual files.
 
 ## Rules
 
+- Keep the `mmg help` description, the root README one-liner, and the
+  `package.json` description identical in content, allowing only formatting
+  differences such as Markdown links. Treat the voice-protected README as
+  the source; update the other descriptions to match it.
 - Use `.my/README.md` for checkout-local notes and reference repos.
   `AGENTS.md` imports it when present. Keep it local; `.my/` is ignored by Git.
 - Put suggestions for the voice-protected root README in `.my/README.md`, under

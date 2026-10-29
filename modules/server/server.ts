@@ -130,7 +130,7 @@ export async function startServer(options: StartServerOptions): Promise<RunningS
   };
 
   if (!options.quiet) {
-    console.log(`my-max-graph listening on http://127.0.0.1:${port}`);
+    console.log(`mmg listening on http://127.0.0.1:${port}`);
     console.log(`Diagram file: ${diagramPath}`);
   }
   return { port, stop };

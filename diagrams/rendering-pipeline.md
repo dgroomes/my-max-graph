@@ -100,7 +100,7 @@ tested. No engine bounds API is used to generate the pixel expectations.
    - Chromium uses an installed Google Chrome or `PUPPETEER_EXECUTABLE_PATH`. resvg must be on `PATH`; tests do not silently skip missing rendering tools.
 3. Regenerate this one diagram with the native route
    - ```shell
-     node dist/my-max-graph.js render diagrams/rendering-pipeline.xml --renderer resvg \
+     node dist/mmg.js render diagrams/rendering-pipeline.xml --renderer resvg \
        --svg diagrams/rendered/rendering-pipeline.svg \
        --out diagrams/rendered/rendering-pipeline.png
      ```

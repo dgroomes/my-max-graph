@@ -16,37 +16,28 @@ This is designed for my own personal use. It is not a goal to invent yet another
 
 ## Usage
 
-This is what it looks like to use `my-max-graph` in the view/edit/review loop.
+This is what it looks like to use my-max-graph via the `mmg` CLI in the view/edit/review loop.
 
-1. Pre-requisite: Install `my-max-graph`
+1. Pre-requisite: Install `mmg`
    - Follow the instructions in [DEVELOPMENT.md](DEVELOPMENT.md).
-2. Create a diagram
+2. Initialize a new diagram
    - ```shell
-     my-max-graph new my-diagram.xml
+     mmg new my-diagram.xml
      ```
 3. Serve it and view it in the browser
    - ```shell
-     my-max-graph my-diagram.xml
+     mmg serve my-diagram.xml
      ```
    - Click the printed link to view the diagram in the browser.
-4. Edit the XML (you or an agent)
-   - Edit the XML by hand in a text editor, or ask your agent to make edits.
-5. Render and inspect
+4. Edit the diagram (you)
+   - Drag boxes around, make new ones, edit text labels, etc. Any changes  you make are synced back to the XML file.
+5. Edit the diagram (agent) 
+   - Ask an agent to edit the diagram. So long as the agent is aware of `mmg` by way of an agent skill, then put it to use! Tell your agent, "mute the color pallete" and it will go ahead and make the many XML edits to get the job done. To verify it's work, the agent doesn't view the rendered diagram in the browser, but uses the `mmg render` command to render a `.png` of the diagram. An agent with vision support can verify things like line alignment, text clipping, colors, etc. Edits to the XML will also be synced and reflected in the diagram in the browser. This is the virtuous view/edit/review loop.
+6. Final render
+   - When you're happy with the diagram, use the `mmg render` command, to create the asset (`.png` or `.svg`) that you ultimately need. 
    - ```shell
-     my-max-graph render my-diagram.xml
+     mmg render my-diagram.xml
      ```
-   - This renders the diagram from its XML definition into a PNG or SVG file, which you or the agent can view.
-   - Then, repeat the view/edit/review loop until you're done. 
-
-
-## Guiding Principles
-
-My vision has gotten clearer on this over time as I've attempted this project in fits and starts. Here are some guiding principles that help me keep this project well-scoped and to my needs.
-
-- The browser is for looking and coarse changes
-   - I don't want to maintain a bunch of rich GUI controls. I only need the ability to drag boxes, connect arrows, and add new boxes and arrows. I don't need a control plane for styles, moving elements forward/backward, or having much of any text input. Procedural work can be delegated to the CLI, like running auto-layout, universally upping/decreasing font size, etc. Much other work can be delegated to the LLM.  
-- Detail and custom work is direct XML edits
-   - Before agents, this would have been a tough sell. But with agents, they can do a ton of tedious stuff and very quickly. We can review the changes by looking at the rendered diagram and the XML diff. We can even hand-edit the XML when needed.
 
 
 ## Reference

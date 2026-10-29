@@ -1,5 +1,5 @@
 /**
- * CLI entrypoint (bundled to dist/my-max-graph.js). Owns process bootstrap,
+ * CLI entrypoint (bundled to dist/mmg.js). Owns process bootstrap,
  * argument parsing, help text, and command dispatch.
  */
 import { existsSync } from 'node:fs';
@@ -34,11 +34,11 @@ async function dispatch(parsed: Args) {
   const head = parsed.positional[0];
 
   if (head === 'version' || head === '-v' || parsed.flags.has('version')) {
-    console.log(`my-max-graph ${__APP_VERSION__}\nBuilt: ${formatLocalTimestamp(__BUILD_TIMESTAMP__)}`);
+    console.log(`mmg ${__APP_VERSION__}\nBuilt: ${formatLocalTimestamp(__BUILD_TIMESTAMP__)}`);
     return;
   }
 
-  if (!head || head === 'help' || head === '--help' || head === '-h') {
+  if (!head || head === 'help' || head === '--help' || head === '-h' || parsed.flags.has('help')) {
     printHelp();
     return;
   }
@@ -61,12 +61,12 @@ async function dispatch(parsed: Args) {
     return;
   }
 
-  throw new Error(`Unknown command: ${head}\n\nRun: my-max-graph help`);
+  throw new Error(`Unknown command: ${head}\n\nRun: mmg help`);
 }
 
 async function cmdServe(diagramArg: string | undefined, parsed: Args) {
   if (!diagramArg) {
-    throw new Error('Usage: my-max-graph <diagram.xml> [--port 3000]');
+    throw new Error('Usage: mmg serve <diagram.xml> [--port 3000]');
   }
   const diagramPath = resolve(process.cwd(), diagramArg);
   if (!existsSync(diagramPath)) {
@@ -90,7 +90,7 @@ async function cmdServe(diagramArg: string | undefined, parsed: Args) {
 async function cmdRender(diagramArg: string | undefined, parsed: Args) {
   if (!diagramArg) {
     throw new Error(
-      'Usage: my-max-graph render <diagram.xml> [--renderer puppeteer|resvg] [--out diagram.png] [--svg diagram.svg]',
+      'Usage: mmg render <diagram.xml> [--renderer puppeteer|resvg] [--out diagram.png] [--svg diagram.svg]',
     );
   }
 
@@ -126,7 +126,7 @@ async function cmdRender(diagramArg: string | undefined, parsed: Args) {
 
 async function cmdNew(diagramArg: string | undefined) {
   if (!diagramArg) {
-    throw new Error('Usage: my-max-graph new <diagram.xml>');
+    throw new Error('Usage: mmg new <diagram.xml>');
   }
   const diagramPath = resolve(process.cwd(), diagramArg);
   if (existsSync(diagramPath)) {
@@ -175,22 +175,23 @@ function formatLocalTimestamp(timestamp: string): string {
 }
 
 function printHelp() {
-  console.log(`my-max-graph — my tooling over maxGraph for diagramming software systems
+  console.log(`my-max-graph
+
+My tooling over maxGraph for working on diagrams with an agent.
 
 Usage:
-  my-max-graph <diagram.xml> [--port 3000]
-  my-max-graph new <diagram.xml>
-  my-max-graph render <diagram.xml> [--renderer puppeteer|resvg] [--out diagram.png] [--svg diagram.svg]
-  my-max-graph version                 (also --version or -v)
-  my-max-graph help
-
-Rendering defaults to Puppeteer. Use --renderer resvg for the resvg CLI alternative.
+  mmg serve <diagram.xml> [--port 3000]
+  mmg new <diagram.xml>
+  mmg render <diagram.xml> [--renderer puppeteer|resvg] [--out diagram.png] [--svg diagram.svg]
+  mmg version                 (also --version or -v)
+  mmg help
 
 Canonical loop:
-  1. my-max-graph diagram.xml
-  2. ask an agent: "make the middle box smaller"
-  3. agent edits XML, runs: my-max-graph render diagram.xml
-  4. agent inspects the image; browser syncs from the file
+  1. mmg new diagram.xml
+  2. mmg serve diagram.xml
+  3. ask an agent: "make the middle box smaller"
+  4. agent edits XML, runs: mmg render diagram.xml
+  5. agent inspects the image; browser syncs from the file
 `);
 }
 

@@ -8,7 +8,7 @@ import test from 'node:test';
 import { JSDOM } from 'jsdom';
 import { decodePng } from './png.ts';
 
-const cli = fileURLToPath(new URL('../dist/my-max-graph.js', import.meta.url));
+const cli = fileURLToPath(new URL('../dist/mmg.js', import.meta.url));
 const fixture = `<GraphDataModel><root>
   <Cell id="0"/><Cell id="1" parent="0"/>
   <Cell id="api" value="API &amp; Worker&#10;Line two" vertex="1" parent="1">

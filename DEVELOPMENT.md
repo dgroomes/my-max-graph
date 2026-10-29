@@ -17,14 +17,14 @@ Follow these instructions to build and install `my-max-graph`. Run commands from
    - ```shell
      node build.mjs
      ```
-   - Produces `public/app.js` (browser) and `dist/my-max-graph.js` (CLI). Rebuild after changing source files.
+   - Produces `public/app.js` (browser) and `dist/mmg.js` (CLI). Rebuild after changing source files.
 4. Install globally
    - ```shell
      npm install -g .
      ```
 5. Verify the installed command
    - ```shell
-     my-max-graph version
+     mmg version
      ```
    - Shows the package version and the build timestamp embedded by `node build.mjs`, displayed in your local time with its UTC offset.
    - The command is now available from any directory. See [README.md](README.md) for usage.
@@ -45,7 +45,7 @@ is unchanged.
    - Requires resvg 0.49+ for `--query-bbox`; verified with 0.49.0. Install the fonts used by the diagram; Liberation or DejaVu fonts provide fallbacks on Linux.
 2. Render
    - ```shell
-     my-max-graph render diagram.xml --renderer resvg
+     mmg render diagram.xml --renderer resvg
      ```
    - `--out` and `--svg` select output paths as usual. resvg measures the SVG (including text and strokes); the app crops its viewport to those bounds plus 24 units of padding. Drawing coordinates and scale stay unchanged. PNG is 2× the cropped SVG size, with transparency preserved.
    - Labels use plain SVG text and explicit newlines. Text backgrounds/borders are omitted; HTML labels and images are unsupported. Use the default renderer when those features are needed.

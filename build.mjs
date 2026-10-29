@@ -11,7 +11,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = dirname(fileURLToPath(import.meta.url));
-const distCli = join(root, 'dist', 'my-max-graph.js');
+const distCli = join(root, 'dist', 'mmg.js');
 const browserOut = join(root, 'public', 'app.js');
 const { version } = JSON.parse(await readFile(join(root, 'package.json'), 'utf8'));
 const buildTimestamp = new Date().toISOString();

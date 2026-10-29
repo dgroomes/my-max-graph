@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "My tooling over maxGraph for working on diagrams with an agent",
+  "description": "My tooling over maxGraph for working on diagrams with an agent.",
   "bin": {
-    "my-max-graph": "dist/my-max-graph.js"
+    "mmg": "dist/mmg.js"
   },
   "files": [
     "dist",
